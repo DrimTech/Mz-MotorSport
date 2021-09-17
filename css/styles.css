@@ -15,7 +15,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/*Containers and Navs*/
 body{
     font-family: 'Roboto', sans-serif;
 }
@@ -30,6 +30,16 @@ body{
 
 .container--modifier{
     width: 60%;
+}
+
+.preview-container
+{
+    width: 60%;
+    max-width: 1500px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 50px 0;
+    height: auto;
 }
 
 .hero{
@@ -134,7 +144,7 @@ body{
     border-radius: 6px;
 }
 
-/* services */
+/* cards and services */
 
 .services{
     background: #fafafa;
@@ -168,6 +178,7 @@ body{
     flex-wrap: wrap;
 }
 
+
 .card{
     width: 30%;
     padding: 30px 30px;
@@ -192,31 +203,65 @@ body{
     box-shadow: 0 0 6px var(--color_shadow);
 }
 
+.card-preview {
+    float: right;
+    width: 30%;
+    height: 500px;
+    padding: 30px 30px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ffffff 0%, var(--light) 100%);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 35px;
+    box-shadow: 0 0 6px var(--color_shadow);
+
+}
+
 .card_img{
     width: 95%;
     height: 200px;
     object-fit: cover;
     
 }
+.img-prev
+{
+    width: 60%;
+    height: 500px;
+    object-fit: cover;
+}
 
-.cards_text{
+
+.card_text{
     text-align: center;
     width: 90%;
     margin:0 auto;
 }
+.card_textv2
+{
+    text-align: left;
+    width: 90%;
+    margin:0 auto; 
+}
 
 .card_list{
     color: var(--blue2);
-    font-weight: 700;
+    font-weight: 900;
     margin: 25px 0 12px ;
     font-size: 18px;
 }
 
-.precio_auto{
+.card_listv2{
     color: var(--blue2);
+    font-weight: 900;
+    margin: 25px 0 12px ;
+    font-size: 30px;
+}
+
+.precio_auto{
+    color: #000;
     font-weight: 800;
     margin: 0 0 0 ;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 
@@ -241,12 +286,12 @@ body{
     border-radius: 6px;
     text-decoration: none;
     width: 100%;
-    color: var(--black1);
+    color: #fafafa;
     font-weight: 700;
     text-align: center;
     padding: 12px 0;
 }
-/* Chek */
+/* Check index experience */
 
 .check{
     display: flex;
