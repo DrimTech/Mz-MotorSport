@@ -1,0 +1,141 @@
+<form action="" id="form-nueva-cita">
+    <div class="modal-header">
+        <h5 class="modal-title">Crear una publicacion </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+      <div class="modal-body">
+            <div class="mb-3">
+                <label for="Marca" class="form-label">Marca</label>
+                <input type="text" value="" class="form-control" id="Marca" required placeholder="Ej.: Nissan">
+            </div>  
+            <div class="mb-3">  
+              <label for="Marca" class="form-label">Modelo</label>
+              <input type="text" value="" class="form-control" id="Marca" required placeholder="Ej.: Sentra">
+          </div>
+          <div class="mb-3">
+            <label for="Modelo" class="form-label">Año</label>
+            <input type="text" value="" class="form-control" id="ano" required placeholder="Ej.: 2018">
+        </div>
+            <div class="mb-3">
+                <label for="Kilometraje" class="form-label">Kilometraje</label>
+                <input type="text" value="" class="form-control" id="Kilometraje" required placeholder="Ej.: 50,000">
+            </div>
+            <fieldset class="row mb-3">
+              <legend class="col-form-label col-sm-2 pt-0">Condicion</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="rdioNuevo" value="option1" checked>
+                  <label class="form-check-label" for="rdioNuevo">
+                    Nuevo
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="rdioSeminuevo" value="option2">
+                  <label class="form-check-label" for="rdioSeminuevo">
+                    Seminuevo
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="rdioUsado" value="option3">
+                  <label class="form-check-label" for="rdioUsado">
+                    Usado
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+            <div class="col-auto">
+              <label for="Carroceria" class="form-label">Carroceria</label>
+              <select class="form-select" id="CarroceriaAutos">
+                <option selected>Seleccionar</option>
+                <option value="1">Sedan</option>
+                <option value="2">SUV</option>
+                <option value="3">Pickup</option>
+                <option value="4">Hatchback</option>
+                <option value="5">Cuope</option>
+                <option value="6">Convertible</option>
+              </select>
+            </div>
+            <br>
+            <fieldset class="row mb-3">
+              <legend class="col-form-label col-sm-2 pt-0">Transmision</legend>
+              <div class="col-sm-11">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="rdioManual" value="option1" checked>
+                  <label class="form-check-label" for="rdioManual">
+                    Manual
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="rdioAutomatica" value="option2">
+                  <label class="form-check-label" for="rdioAutomatica">
+                    Automatica
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+           <div class="col-auto">
+              <label for="Color" class="form-label">Color</label>
+              <select class="form-select" id="ColorAutos">
+                <option selected>Seleccionar</option>
+                <option value="1">Plata</option>
+                <option value="2">Blanco</option>
+                <option value="3">Negro</option>
+                <option value="4">Azul</option>
+                <option value="5">Amarillo</option>
+                <option value="6">Beige</option>
+                <option value="7">Rojo</option>
+                <option value="8">Verde</option>
+                <option value="9">Tinto</option>
+                <option value="10">Rosa</option>
+                <option value="11">Gris</option>
+                <option value="12">Arena</option>
+                <option value="13">Morado</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <label for="NoPuertas" class="form-label">No.Puertas</label>
+              <select class="form-select" id="CarroceriaAutos">
+                <option selected>Seleccionar</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option> 
+              </select>
+            </div>
+           <div class="col-auto">
+              <label for="Conbustible" class="form-label">Tipo de Conbustible</label>
+              <select class="form-select" id="ColorAutos">
+                <option selected>Seleccionar</option>
+                <option value="1">Hibrido</option>
+                <option value="2">Electrico</option>
+                <option value="3">Diesel</option>
+                <option value="4">Gasolina</option>
+            </div>
+           <div class="mb-3">
+              <label for="Motor" class="form-label">Motor</label>
+              <input type="text" value="" class="form-control" id="Motor" required placeholder="Motor Ej.: 2.4L">
+            </div>
+            <br>
+            <div class="mb-3">
+              <label for="No.rin" class="form-label">No.Rin</label>
+              <input type="text" value="" class="form-control" id="NoRin" required placeholder="Ej.: Rin 17">
+            </div>
+            <div class="mb-3">
+              <label for="NoAsientos" class="form-label">No.Asientos</label>
+              <input type="text" value="" class="form-control" id="NoAsientos" required placeholder="Ej.: 5">
+            </div>
+            <div class="col-auto">
+              <label for="Seguridad" class="form-label">Seguridad</label>
+              <select class="form-select" id="ColorAutos">
+                <option selected>Seleccionar</option>
+                <option value="1">Kit completa de Seguridad</option>
+                <option value="2">Solo Bolsas de aire</option>
+                <option value="3">Solo cinturones</option>
+            </div> -->    
+      </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Publicar</button>
+    </div>
+</form>
