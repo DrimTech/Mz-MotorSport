@@ -1,0 +1,69 @@
+/*
+------------------------------------------------
+Estilos dashboard administrador
+--------------------------------------------------
+*/
+
+    h1 {
+        text-align: center;
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+        color: black;
+    }
+
+    table {
+        width: 20%;
+        background-color: #6c757d;
+        border: 3px black;
+        border-radius: 10px;
+        margin: auto;
+        align-items: center;
+        align-content: center;
+    }
+
+    /*.izq {
+        text-align: right;
+        color: black;
+    }
+    .der {
+        text-align: left;
+        padding: 10px;
+    }
+    */
+
+    td {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+
+    button {
+    transition-duration: 0.4s;
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    border-radius: 10px;
+    width: 100%;
+    align-items: center;
+    }
+
+    button:hover {
+    background-color: gray;
+    color: white;
+    }
+
+    a{
+        color: white;
+    }
+
+    a:hover{
+        color: white;
+        text-decoration: none;
+    }

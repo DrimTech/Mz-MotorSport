@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-<title>Multiusuarios PHP MySQL: Niveles de Usuarios</title>
+<title>Registrarse: MZ-MotorSports</title>
 		
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <script src="js/jquery-1.12.4-jquery.min.js"></script>
@@ -46,7 +46,7 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 	$username	= $_REQUEST['txt_username'];	//input nombre "txt_username"
 	$email		= $_REQUEST['txt_email'];	//input nombre "txt_email"
 	$password	= $_REQUEST['txt_password'];
-	$password 	= hash('sha512', $password);	//input nombre "txt_password"
+	$password = hash('sha512', $password);
 	$role		= $_REQUEST['txt_role'];	//seleccion nombre "txt_role"
 		
 	if(empty($username)){
@@ -96,7 +96,7 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 				if($insert_stmt->execute())
 				{
 					$registerMsg="Registro exitoso: Esperar página de inicio de sesión"; //Ejecuta consultas 
-					header("refresh:2;index.php"); //Actualizar despues de 2 segundo a la portada
+					header("refresh:2;login.php"); //Actualizar despues de 2 segundo a la portada
 				}
 			}
 		}
@@ -165,8 +165,8 @@ include("headerv2.php");
     <div class="col-sm-12">
     <select class="form-control" name="txt_role">
         <!--<option value="" selected="selected"> - seleccione rol - </option>-->
-        <!--<option value="admin">Admin</option>-->
-        <!--<option value="adminval">Admin Validador</option>-->
+        <!--<option value="admin">Admin</option>
+        <option value="adminval">Admin Validador</option>-->
         <option value="usuario">Usuario</option>
     </select>
     </div>
@@ -181,7 +181,7 @@ include("headerv2.php");
 
 <div class="form-group">
 <div class="col-sm-12">
-¿Tienes una cuenta? <a href="index.php"><p class="text-info">Inicio de sesión</p></a>		
+¿Tienes una cuenta? <a href="login.php"><p class="text-info">Inicio de sesión</p></a>		
 </div>
 </div>
     

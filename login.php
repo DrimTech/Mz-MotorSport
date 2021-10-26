@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-<title>Multiusuarios PHP MySQL: Niveles de Usuarios</title>
+<title>Iniciar Sesión: MZ-MotorSports</title>
 		
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <script src="js/jquery-1.12.4-jquery.min.js"></script>
@@ -55,8 +55,9 @@ if(isset($_REQUEST['btn_login']))
 {
 	$email		=$_REQUEST["txt_email"];	//textbox nombre "txt_email"
 	$password	=$_REQUEST["txt_password"];	//textbox nombre "txt_password"
+	$password 	= hash('sha512', $password);
 	$role		=$_REQUEST["txt_role"];		//select opcion nombre "txt_role"
-		
+
 	if(empty($email)){						
 		$errorMsg[]="Por favor ingrese Email";	//Revisar email
 	}
@@ -103,14 +104,14 @@ if(isset($_REQUEST['btn_login']))
 								header("refresh:3;personal/personal_portada.php");	
 								break;
 								
-							case "usuarios":
+							case "usuario":
 								$_SESSION["usuarios_login"]=$email;				
 								$loginMsg="Usuario: Inicio sesión con éxito";	
 								header("refresh:3;usuarios/usuarios_portada.php");		
 								break;
 								
 							default:
-								$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
+								$errorMsg[]="Correo electrónico o contraseña o rol incorrectos";
 						}
 					}
 					else
@@ -184,18 +185,18 @@ include("headerv2.php");
   <div class="form-group">
   <label class="col-sm-6 text-left">Password</label>
   <div class="col-sm-12">
-  <input type="password" name="txt_password" class="form-control" placeholder="Ingrese passowrd" />
+  <input type="password" name="txt_password" class="form-control" placeholder="Ingrese password" />
   </div>
   </div>
       
-  <div class="form-group">
+  <div hidden class="form-group">
       <label class="col-sm-6 text-left">Seleccionar rol</label>
       <div class="col-sm-12">
       <select class="form-control" name="txt_role">
-          <option value="" selected="selected"> - selecccionar rol - </option>
+          <!--<option value="" selected="selected"> - selecccionar rol - </option>
           <option value="admin">Admin</option>
-          <option value="personal">Personal</option>
-          <option value="usuarios">Usuarios</option>
+          <option value="personal">Personal</option>-->
+          <option value="usuario">Usuario</option>
       </select>
       </div>
   </div>
