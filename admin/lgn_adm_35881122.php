@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-<title>Iniciar Sesión: MZ-MotorSports</title>
+<title>ADMIN Login: MZ-MotorSports</title>
 		
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 <script src="../js/jquery-1.12.4-jquery.min.js"></script>
@@ -95,7 +95,7 @@ if(isset($_REQUEST['btn_login']))
 							case "admin":
 								$_SESSION["admin_login"]=$email;			
 								$loginMsg="Admin: Inicio sesión con éxito";	
-									header("refresh:3;admin_portada.php");	
+									header("refresh:2;indexadmin.html");	
 								break;
 								
 							case "personal";
@@ -206,7 +206,7 @@ if(isset($_REQUEST['btn_login']))
   </div>
   </div>
   
-  <div class="form-group">
+  <div hidden class="form-group">
   <div class="col-sm-12">
   ¿No tienes una cuenta? <a href="../registro.php"><p class="text-info">Registrar Cuenta</p></a>		
   </div>
