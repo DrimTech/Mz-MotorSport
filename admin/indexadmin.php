@@ -51,10 +51,10 @@
 <div class="row">
    <div class="col">
      <div class="p-3 pb-5 bg-light " style="border-radius: 15px;">
-       <h4>Usuarios</h4>
-       <small>Ver tabla de usuarios y sus estados</small><br>
-       <a href="#" class="btn btn-primary float-end">Entrar</a>
-      </div>
+       <h4>Personal</h4>
+       <small>Administrar personal validador</small><br>
+       <a href="adm_personal.php" class="btn btn-primary float-end">Entrar</a>
+      </div>0
     </div>
     <!---->
     <div class="col">
