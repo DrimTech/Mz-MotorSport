@@ -164,8 +164,8 @@ include("headerv2.php");
     <label class="col-sm-9 text-left">Seleccione tipo</label>
     <div class="col-sm-12">
     <select class="form-control" name="txt_role">
-        <!--<option value="" selected="selected"> - seleccione rol - </option>-->
-        <!--<option value="admin">Admin</option>
+        <!--<option value="" selected="selected"> - seleccione rol - </option>
+        <option value="admin">Admin</option>
         <option value="adminval">Admin Validador</option>-->
         <option value="usuario">Usuario</option>
     </select>

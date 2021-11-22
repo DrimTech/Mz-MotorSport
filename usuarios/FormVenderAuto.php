@@ -6,25 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-         <link rel="stylesheet" href="css/styles.css">
+         <link rel="stylesheet" href="../css/styles.css">
         <title>MzMotorSport</title>
       </head>
 <body>
-    <!--Header-->
-    <header class="herov2">
-        <nav class="nav_hero">
+<header class="herov2">
+    <nav class="nav_hero">
         <div class="container nav_container">
             <div class="logo">
-                <img class="logo_name" src="assets/img/MZMOTORSPORTLOGO.png" alt="">
+                <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
             </div>
             <ul class="links">
-                <li class="link-menu-items"><a href="index.html" class="link">Inicio</a></li>
-                <li class="link-menu-items"><a href=""><i class='bx bx-user-circle'></i></a></li>
+                <li class="link-menu-items"><a href="usuarios_portada.php" class="link">Regresar al panel de usuario</a></li>
             </ul>
             </div>
-        </nav>
-    </header>
-    <br><br>
+    </nav>
+</header>
     <h2><center>Vender tu Automovil</center></h2>
 <div class="container">
     <form action="" id="form-nueva-cita">
