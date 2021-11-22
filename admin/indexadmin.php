@@ -1,6 +1,12 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['admin_login']))    
+  {
+      header("location: ../login.php");  
+  } #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
+?>
 <!DOCTYPE html>
 <html lang="en" style="color: var(--blue);">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +17,6 @@
   <title>MzMotorSport: Dashboard</title>
 </head><!--Título de pestaña, importaciones y conexiones-->
 <body>
-<?php
-  session_start();
-  if(!isset($_SESSION['admin_login']))    
-  {
-      header("location: ../login.php");  
-  } #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
-?>
 <br>
 <div class="position-relative">
   <div class="position-absolute top-50 start-50 translate-middle">
@@ -53,8 +52,8 @@
      <div class="p-3 pb-5 bg-light " style="border-radius: 15px;">
        <h4>Personal</h4>
        <small>Administrar personal validador</small><br>
-       <a href="adm_personal.php" class="btn btn-primary float-end">Entrar</a>
-      </div>0
+       <a href="usr_adm.php" class="btn btn-primary float-end">Entrar</a>
+      </div>
     </div>
     <!---->
     <div class="col">

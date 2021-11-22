@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
   if(!isset($_SESSION['usuarios_login']))    
   {
       header("location: ../login.php");  
-  } #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
+  }
 ?>
   <!--Header-->
   <header class="herov2">
@@ -27,7 +27,7 @@
         <ul class="links">
           <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
           <li class="link-menu-items"><a href="../Cauto.html" class="link">Comprar</a></li>
-          <li class="link-menu-items"><a href="../Vauto.html" class="link">Vender</a></li>
+          <li class="link-menu-items"><a href="../Vauto.php" class="link">Vender</a></li>
           <li class="link-menu-items"><a href="#" class="link">Pendiente</a></li>
           <li class="link-menu-items"><a href="#" class="link--active">Contacto</a></li>
           <li class="link-menu-items"><a href="#"><i class='bx bx-user-circle'></i></a></li>
@@ -35,7 +35,6 @@
       </div>
     </nav>
 </header>
-
 <section class="container">
   <h1>Vender tu Auto</h1>
   <h3>La forma mas sencilla de vender tu Auto</h3>
