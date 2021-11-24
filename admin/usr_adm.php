@@ -93,6 +93,7 @@ if(!isset($_SESSION['admin_login']))
                                         <th width="13%">Nombre</th>
                                         <th width="13%">Apellidos</th>
                                         <th width="6%">Email</th>
+                                        <th width="7%">Contacto</th>
                                         <th width="6%">Editar</th>
                                         <th width="6%">Eliminar</th>
                                     </tr>
@@ -107,10 +108,10 @@ if(!isset($_SESSION['admin_login']))
             					?>
                                     <tr>
                                         <td style="text-align: center;"><?php echo $row["username"]; ?></td>
-                                        <td><?php echo $row["username"]; ?></td>
                                         <td class="centro"><?php echo $row["nombre"]; ?></td>
                                         <td class="centro"><?php echo $row["apellidos"]; ?></td>
                                         <td class="centro"><?php echo $row["email"]; ?></td>
+                                        <td class="centro"><?php echo $row["contacto"]; ?></td>
             							<td class="centro" width="4%"><a href="editar_entrada.php?id=<?php echo $row['nombre']?>" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
             							<td class="centro" width="7%"><a href="eliminar_entrada.php?id=<?php echo $row['id']?>" class = "btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
                                     </tr>

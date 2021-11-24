@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2021 a las 23:37:14
+-- Tiempo de generación: 24-11-2021 a las 14:22:47
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `mz_motorsports`
 --
+CREATE DATABASE IF NOT EXISTS `mz_motorsports` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `mz_motorsports`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contenido`
+--
+
+CREATE TABLE `contenido` (
+  `id` int(11) NOT NULL,
+  `Titulo` varchar(85) DEFAULT NULL,
+  `Fecha` datetime NOT NULL,
+  `Comentario` text NOT NULL,
+  `Imagen` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -29,8 +45,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(40) NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
   `email` varchar(40) NOT NULL,
+  `contacto` varchar(15) NOT NULL,
   `pwd` varchar(150) NOT NULL,
   `role` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,14 +58,20 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `email`, `pwd`, `role`) VALUES
-(1, 'MZMotorSports', 'mzmotorsport30@gmail.com', 'e50d11e94bafcd7c78120d7a6478bce07c60b70207f7aa19e71ebdb37eecccbde475e051a28209fdfb5c9a217ea08d335422244574465e73c39863c8f18874fa', 'admin'),
-(2, 'EnriquexDGamer', 'eochoa11@ucol.mx', '144f47f0aec08b76e6f3249cf4dd5e252b3f4fdc96d95b70320634ce399bf0d94ee8d2560808232361061e3c41257a47d38e356d72e1812bc58ed2f8018a4d1f', 'usuario'),
-(3, 'DrimTech', 'drimtech@drimtech.com', 'e50d11e94bafcd7c78120d7a6478bce07c60b70207f7aa19e71ebdb37eecccbde475e051a28209fdfb5c9a217ea08d335422244574465e73c39863c8f18874fa', 'usuario');
+INSERT INTO `usuarios` (`id`, `username`, `nombre`, `apellidos`, `email`, `contacto`, `pwd`, `role`) VALUES
+(1, 'MZMotorSports', '', '', 'mzmotorsport30@gmail.com', '', 'e50d11e94bafcd7c78120d7a6478bce07c60b70207f7aa19e71ebdb37eecccbde475e051a28209fdfb5c9a217ea08d335422244574465e73c39863c8f18874fa', 'admin'),
+(2, 'Jk99', 'Enrique de Jesús', 'Ochoa Preciado', 'eochoa11@ucol.mx', '3141076334', 'a46fdd60a217586bdb806f1a0646fdabb1a1773ec14166e2207ce445cefa01552c79a03e6fcceb789ee1d32735c27e48d4e99993d13f1b23de2c76caae8775ac', 'usuario'),
+(3, 'Validador1', 'Enrique de Jesús', 'Ocho Preciado', 'elpepe@gmail.com', '3141076334', 'a46fdd60a217586bdb806f1a0646fdabb1a1773ec14166e2207ce445cefa01552c79a03e6fcceb789ee1d32735c27e48d4e99993d13f1b23de2c76caae8775ac', 'adminval');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `contenido`
+--
+ALTER TABLE `contenido`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -57,6 +82,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `contenido`
+--
+ALTER TABLE `contenido`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
