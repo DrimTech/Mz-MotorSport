@@ -66,8 +66,8 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 				$insert_stmt->bindParam(":urole",$role);
 				if($insert_stmt->execute())
 				{
-					$registerMsg="Registro exitoso: Esperar página de inicio de sesión"; //Ejecuta consultas 
-					header("refresh:2;login.php"); //Actualizar despues de 2 segundo a la portada
+					$registerMsg="Registro exitoso: redirigiendo a la página administrativa..."; //Ejecuta consultas 
+					header("refresh:3;usr_adm.php"); //Actualizar despues de 2 segundo a la portada
 				}
 			}
 		}
@@ -77,7 +77,6 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 		}
 	}
 }
-include("../headerv2.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -199,8 +198,8 @@ include("../headerv2.php");
 						<!---->
 						<div class="form-group">
 							<div class="col-sm-12">
-								<input type="submit" name="btn_register" class="btn btn-primary btn-block" value="Registro">
-							<!--<a href="index.php" class="btn btn-danger">Cancel</a>-->
+								<input type="submit" name="btn_register" class="btn btn-primary btn-block" value="Registro"><br>
+							<a href="usr_adm.php" class="btn btn-danger btn-block">Cancel</a>
 							</div>
 						</div>
 						<!---->

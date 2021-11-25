@@ -27,7 +27,7 @@
 <br>
 <h2><center>Crear Publicacion</center></h2>
 <div class="container">
-<form action="Insertar Contenido.php" method="post" enctype="multipart/form-data" name="form1">
+<form action="insertar_contenido.php" method="post" enctype="multipart/form-data" name="form1">
     <hr color= white width= 100%><br>
     <div class="mb-3">
         <input type="text" class="form-control" name="campo_titulo" id="campo_titulo" placeholder="Titulo">
