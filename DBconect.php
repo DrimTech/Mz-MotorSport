@@ -15,6 +15,3 @@ catch(PDOEXCEPTION $e)
 }
 
 ?>
-
-
-

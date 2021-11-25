@@ -206,7 +206,7 @@ body{
 
 .card-preview {
     float: right;
-    width: 30%;
+    width: 28%;
     height: 500px;
     padding: 30px 30px;
     overflow: hidden;
@@ -219,19 +219,15 @@ body{
 }
 
 .card_img{
-    width: 95%;
-    height: 200px;
+    width: 100%;
+    height: 150px;
     object-fit: cover;
-    
 }
-.img-prev
+.img-fluid
 {
-    width: 60%;
-    height: 500px;
-    object-fit: cover;
+    max-width: 66%;
+    height: auto;
 }
-
-
 .card_text{
     text-align: center;
     width: 90%;
@@ -291,7 +287,10 @@ body{
     font-weight: 700;
     text-align: center;
     padding: 12px 0;
+    margin-top: 70px;
 }
+
+
 /* Check index experience */
 
 .check{
@@ -352,10 +351,16 @@ body{
     text-align: center;
 }
 
+.descrip_card
+{
+    margin-bottom: 30px;
+}
+
+
 
 /* Responsive */
 
-@media screen and (max-width:900px){
+@media screen and (max-width:1400px){
     .mockup{
         width: 600px;
         height: auto;
@@ -377,7 +382,8 @@ body{
         justify-content: space-evenly;
     }
 
-    .services .card{
+    .services .card 
+    {
         width: 45%;
     }
 
@@ -394,6 +400,19 @@ body{
         margin-bottom: 35px;
     }
 
+    .card-preview {
+        float: center;
+        width: 100%;
+        height: 500px;
+        padding: 30px 30px;
+        margin-top: 20px;
+    }
+    
+    .img-fluid
+    {
+    max-width: 100%;
+    height: auto;
+    }
 }   
 
 @media screen and (max-width:768px){
@@ -474,21 +493,44 @@ body{
         width: 80%;
     }
     
+    .card-preview {
+        float: center;
+        width: 100%;
+        height: 500px;
+        padding: 30px 30px;
+        margin-top: 20px;
+    }
 
-    .card .cardv2
+    .img-fluid
+    {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card .cardv2 
     {
         margin-bottom: 40px;
         width: 65%;
     }
 
     .card_title{
-        font-size: 35px;
+        font-size: 20px;
     }
+
+    .precio_auto
+    {
+        font-size: 25px;
+    }
+    .card_listv2
+    {
+        font-size: 20px;
+    }
+    
     
 
     .card_button .precio_auto
     {
-        width: 100%;
+        width: 40%;
     }
 
     .background{
@@ -514,12 +556,12 @@ body{
         margin-bottom: 15px;
     }
 
-    .services .card .cardv2
+    .services .card .cardv2 
     {
         width: 95%;
     }
 
-    .card .cardv2
+    .card .cardv2 
     {
         width: 95%;
     }
@@ -529,10 +571,31 @@ body{
         width: 95%;
     }
 
+    
     .container--modifier
     {
         width: 90%;
     }
+
+    .card_title{
+        font-size: 20px;
+    }
+
+    .precio_auto
+    {
+        font-size: 25px;
+    }
+    .card_listv2
+    {
+        font-size: 20px;
+    }
+    
+    .img-fluid
+    {
+        max-width: 100%;
+        height: auto;
+    }
+
     .check_item
     {
         width: 100%;
@@ -540,5 +603,31 @@ body{
         padding: none;
         justify-content: center;
     }
-
+    /*CSS de ventana emergente*/
+    .window-notice {
+        background: rgba(33, 41, 52, .85);
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        display: flex;
+        position: fixed;
+        z-index: 999;
+    }
+    .window-notice .content {
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(33, 41, 52, .75);
+        box-sizing: content-box;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        max-width: 600px;
+        min-width: 320px !important;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding: 2rem;
+        font-size: 1.3rem;
+    }
 }

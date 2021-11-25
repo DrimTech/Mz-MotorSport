@@ -1,11 +1,12 @@
 <?php
-require_once "DBconect.php";
+require_once "../DBconect.php";
 if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_register" y configúrelo
 {
 	$username	= $_REQUEST['txt_username'];	//input nombre "txt_username"
 	$nombre 	= $_REQUEST['txt_nombre'];
 	$apellidos 	= $_REQUEST['txt_apellidos'];
 	$email		= $_REQUEST['txt_email'];	//input nombre "txt_email"
+	$contacto 	= $_REQUEST['txt_contacto'];
 	$password	= $_REQUEST['txt_password'];
 	$password = hash('sha512', $password);
 	$role		= $_REQUEST['txt_role'];	//seleccion nombre "txt_role"
@@ -13,16 +14,19 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 		$errorMsg[]="Ingrese nombre de usuario";	//Compruebe input nombre de usuario no vacío
 	}
 	else if(empty($nombre)){
-		$errorMsg[]="Ingrese email";	//Revisar email input no vacio
+		$errorMsg[]="Ingrese su nombre";	//Revisar email input no vacio
 	}
 	else if(empty($apellidos)){
-		$errorMsg[]="Ingrese email";	//Revisar email input no vacio
+		$errorMsg[]="Este campo es obligatorio.";	//Revisar email input no vacio
 	}
 	else if(empty($email)){
 		$errorMsg[]="Ingrese email";	//Revisar email input no vacio
 	}
+	else if(empty($contacto)){
+		$errorMsg[]="Este campo es obligatorio.";	//Revisar email input no vacio
+	}
 	else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-		$errorMsg[]="Ingrese email valido";	//Verificar formato de email
+		$errorMsg[]="Ingrese email válido";	//Verificar formato de email
 	}
 	else if(empty($password)){
 		$errorMsg[]="Ingrese password";	//Revisar password vacio o nulo
@@ -52,11 +56,12 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 			}
 			else if(!isset($errorMsg))
 			{
-				$insert_stmt=$db->prepare("INSERT INTO usuarios(username,nombre,apellidos,email,pwd,role) VALUES(:uname,:unombre,:uapellidos,:uemail,:upassword,:urole)"); //Consulta sql de insertar			
+				$insert_stmt=$db->prepare("INSERT INTO usuarios(username,nombre,apellidos,email,contacto,pwd,role) VALUES(:uname,:unombre,:uapellidos,:uemail,:ucontacto,:upassword,:urole)"); //Consulta sql de insertar			
 				$insert_stmt->bindParam(":uname",$username);
 				$insert_stmt->bindParam(":unombre",$nombre);
 				$insert_stmt->bindParam(":uapellidos",$apellidos);	
-				$insert_stmt->bindParam(":uemail",$email);	  		//parámetros de enlace 
+				$insert_stmt->bindParam(":uemail",$email);
+				$insert_stmt->bindParam(":ucontacto",$contacto);	  		//parámetros de enlace 
 				$insert_stmt->bindParam(":upassword",$password);
 				$insert_stmt->bindParam(":urole",$role);
 				if($insert_stmt->execute())
@@ -72,7 +77,7 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 		}
 	}
 }
-include("headerv2.php");
+include("../headerv2.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,9 +86,9 @@ include("headerv2.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
 <title>Registrarse: MZ-MotorSports</title>
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<script src="js/jquery-1.12.4-jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<script src="../js/jquery-1.12.4-jquery.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
 <style type="text/css">
 	.login-form {
 		width: 340px;
@@ -135,7 +140,7 @@ include("headerv2.php");
 				}
 				?> 
 				<div class="login-form">  
-					<center><h2>Registrar</h2></center>
+					<center><h2>Registro de personal</h2></center>
 					<form method="post" class="form-horizontal">
 						<!---->
 						<div class="form-group">
@@ -167,6 +172,13 @@ include("headerv2.php");
 						</div>
 						<!---->
 						<div class="form-group">
+							<label class="col-sm-9 text-left">Celular</label>
+							<div class="col-sm-12">
+								<input type="text" name="txt_contacto" class="form-control" placeholder="Número telefónico/celular" />
+							</div>
+						</div>
+						<!---->
+						<div class="form-group">
 							<label class="col-sm-9 text-left">Password</label>
 							<div class="col-sm-12">
 								<input type="password" name="txt_password" class="form-control" placeholder="Ingrese password" />
@@ -178,9 +190,9 @@ include("headerv2.php");
 						    <div class="col-sm-12">
 							    <select class="form-control" name="txt_role">
 							        <!--<option value="" selected="selected"> - seleccione rol - </option>
-							        <option value="admin">Admin</option>
-							        <option value="adminval">Admin Validador</option>-->
-							        <option value="usuario">Usuario</option>
+							        <option value="admin">Admin</option>-->
+							        <option value="adminval">Admin Validador</option>
+							       <!-- <option value="usuario">Usuario</option>-->
 							    </select>
 						    </div>
 						</div>
@@ -189,12 +201,6 @@ include("headerv2.php");
 							<div class="col-sm-12">
 								<input type="submit" name="btn_register" class="btn btn-primary btn-block" value="Registro">
 							<!--<a href="index.php" class="btn btn-danger">Cancel</a>-->
-							</div>
-						</div>
-						<!---->
-						<div class="form-group">
-							<div class="col-sm-12">
-								¿Tienes una cuenta? <a href="login.php"><p class="text-info">Inicio de sesión</p></a>		
 							</div>
 						</div>
 						<!---->

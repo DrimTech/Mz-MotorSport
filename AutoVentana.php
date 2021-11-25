@@ -11,44 +11,27 @@
       </head>
 <body>
      <!--Header-->
-    <header class="herov2">
-        <nav class="nav_hero">
-            <div class="container nav_container">
-              <div class="logo">
-                <img class="logo_name" src="assets/img/MZMOTORSPORTLOGO.png" alt="">
-              </div>
-            <ul class="links">
-              <li class="link-menu-items"><a href="index.html" class="link">Inicio</a></li>
-              <li class="link-menu-items"><a href="Cauto.html" class="link">Comprar</a></li>
-              <li class="link-menu-items"><a href="Vauto.html" class="link">Vender</a></li>
-              <li class="link-menu-items"><a href="#" class="link">Pendiente</a></li>
-              <li class="link-menu-items"><a href="#" class="link--active">Contacto</a></li>
-              <li class="link-menu-items"><a href=""><i class='bx bx-user-circle'></i></a></li>
-            </ul>
-          </div>
-        </nav>
-    </header>
-    <section class="preview-container">
-        <img src="assets/img/AutosP/AtecaCupra.jpg" class="img-prev"alt="">
+  <?php require_once("./header.php"); ?> <!-- Llama al header/barra de nav -->
+  <!--Header-->
+    <section class="services">
+    <article class="container-cards">
+      <div class="container"> 
+        <img src="assets/img/AutosP/AtecaCupra.jpg" class="img-fluid" alt="..." id="img_car">
             <div class="card-preview">
                 <div class="card_textv2">
-                    <div class="card_listv2">Cupra Ateca</div>
-                    <p class="descrip_card">2020 - Blanca - 33,000km</p>
-                    <br><br>
-                    Precio: <h6 class="precio_auto">$$$</h6>
-                    <br><br>
-                    <p><i class='bx bx-map'></i>Manzanillo,Colima</p>
-                    <br><br><br>
+                    <div class="card_listv2" id="Car_name">Cupra Ateca</div>
+                    <p class="descrip_card" id="Car_descrip">2020 - Blanca - 33,000km</p>
+                    Precio: <h6 class="precio_auto" id="Car_precio">$$$</h6>     
+                    <br>
+                    <p><i class='bx bx-map'></i>Manzanilllo,Colima</p>
                     <button type="button" id="btn-generar-citacompra" 
-            class="card_button" data-bs-toggle="modal" data-bs-target="#modal-nueva-cita">
-                ¡Me Interesa! 
+                    class="card_button" data-bs-toggle="modal" data-bs-target="#modal-nueva-cita">¡Me Interesa!</button>
                   </div>
             </div>
-            <div class="Descrip_car">
-
-            </div>
         </div>
-    </section>
+      </div>
+    </article>
+  </section>
     <section class="email container container--modifier">
         <h2 class="subtitle subtitle--modifier">
         Caracteristicas</h2>
@@ -118,7 +101,7 @@
                   <div class="modal-body">
                           <div class="mb-3">
                               <label for="Modelo" class="form-label">Nombre Completo</label>
-                              <input type="text" value="" class="form-control" id="Model"required placeholder="Nombre Completo">
+                              <input type="text" value="" class="form-control" id="Nombre"required placeholder="Nombre Completo">
                           </div> 
                           <div class="mb-3">
                               <label for="descrip" class="form-label">Numero de Telefono</label>

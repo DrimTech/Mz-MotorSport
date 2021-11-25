@@ -5,27 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <link rel="stylesheet" href="css/styles.css">
   <title>MzMotorSport</title>
 </head>
 <body>
   <!--Header-->
-  <header class="herov2">
-    <nav class="nav_hero">
-      <div class="container nav_container">
-        <div class="logo">
-          <img class="logo_name" src="assets/img/MZMOTORSPORTLOGO.png" alt="">
-        </div>
-        <ul class="links">
-          <li class="link-menu-items"><a href="index.html" class="link">Inicio</a></li>
-          <li class="link-menu-items"><a href="Cauto.html" class="link">Comprar</a></li>
-          <li class="link-menu-items"><a href="Vauto.html" class="link">Vender</a></li>
-          <li class="link-menu-items"><a href="#" class="link">Pendiente</a></li>
-          <li class="link-menu-items"><a href=""><i class='bx bx-user-circle'></i></a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <?php require_once("./header.php"); ?> <!-- Llama al header/barra de nav -->
+  <!--Header-->
           <!--Tarjetas de carros-->
     <section class="cars">
       <div class="container">
@@ -33,14 +20,14 @@
 
       <article class="container-cards">
         <div class="cardv2">
-          <a href="AutoVentana.html"><img src="assets/img/AutosP/AtecaCupra.jpg" class="card_img"></a>
-          <div class="card_text">
-            <div class="card_list">Cupra Ateca</div>
-            <p class="descrip_card">2020 - Blanca - 33,000km</p>
-            <p class="precio_auto">$$$</p>
+          <a href="AutoVentana.php"><img src="assets/img/AutosP/AtecaCupra.jpg" class="card_img" id="img_car"></a>
+          <div class="card_text" id="tarjeta_carros">
+            <div class="card_list" id="Car_name">Cupra Ateca</div>
+            <p class="descrip_card" id="Car_descrip" >2020 - Blanca - 33,000km</p>
+            <p class="precio_auto" id="Car_precio">$$$</p>
           </div>
         </div>
-
+        <!--
         <div class="cardv2">
           <img src="assets/img/AutosP/AudiRS5.jpg" class="card_img">
           <div class="card_text">
@@ -102,7 +89,7 @@
             <p class="descrip_card">2021 - Naranja - 1,000km</p>
             <p class="precio_auto">$$$</p>
           </div>
-        </div>
+        </div> -->
         <!--Tarjetas de carros(FIN)-->
       </article>
       </div>
