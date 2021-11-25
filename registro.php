@@ -77,7 +77,7 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 		}
 	}
 }
-include("headerv2.php");
+include("elements/headerv2.php");
 ?>
 <!DOCTYPE html>
 <html>

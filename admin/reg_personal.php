@@ -114,6 +114,7 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 </style>
 </head>
 <body>
+	
 	<div class="wrapper">	
 		<div class="container">	
 			<div class="col-lg-12">		

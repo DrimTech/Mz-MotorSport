@@ -95,7 +95,7 @@ if(isset($_REQUEST['btn_login']))
 		$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
 	}
 }
-include("header.php");
+include("elements/headerv2.php");
 ?>
 <!DOCTYPE html>
 <html>

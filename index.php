@@ -40,7 +40,7 @@ require_once 'DBconect.php';
 session_start();
 if(isset($_SESSION["admin_login"]))	//Condicion admin
 {
-	header("location: admin/admin_portada.php");	
+	header("location: admin/indexadmin.php");	
 }
 if(isset($_SESSION["personal_login"]))	//Condicion personal
 {
@@ -94,7 +94,7 @@ if(isset($_REQUEST['btn_login']))
 							case "admin":
 								$_SESSION["admin_login"]=$email;			
 								$loginMsg="Admin: Inicio sesión con éxito";	
-								header("refresh:3;admin/admin_portada.php");	
+								header("refresh:3;admin/indexadmin.php");	
 								break;
 								
 							case "personal";
@@ -138,7 +138,7 @@ if(isset($_REQUEST['btn_login']))
 		$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
 	}
 }
-include("headerv2.php");
+include("elements/headerv2.php");
 ?>
 
 	

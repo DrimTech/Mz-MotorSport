@@ -11,7 +11,7 @@
 </head>
 <body>
   <!--Header-->
-  <?php require_once("./header.php"); ?> <!-- Llama al header/barra de nav -->
+  <?php require_once("./elements/header.php"); ?> <!-- Llama al header/barra de nav -->
   <!--Header-->
           <!--Tarjetas de carros-->
     <section class="cars">

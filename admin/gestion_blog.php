@@ -36,7 +36,7 @@
     }
 
     h1, h2, h3, h4 {
-    	color: white;
+    	color: black;
     }
 
     th, .centro {
@@ -46,7 +46,7 @@
 </style> <!-- Estilos del form que presenta la lista de publicaciones -->
 </head>
 
-<body style="background-color: #343a40;">
+<body style="background-color: #FFFFF;">
 
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">

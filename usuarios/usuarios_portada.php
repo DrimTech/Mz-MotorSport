@@ -20,9 +20,11 @@
 <br>
 <div class="position-relative">
   <div class="position-absolute top-50 start-50 translate-middle">
-    <a href="index.html"><img src="../assets/img/MZMOTORSPORTLOGOcut.png" alt="" style="padding-top: 50px;"></a>
+    <a href="../index.html"><img src="../assets/img/MZMOTORSPORTLOGOcut.png" alt="" style="padding-top: 50px;"></a>
   </div>  
 </div>
+<br>
+
 <!-- Comienza dashboard -->
 <section class="container mt-5 w-75">
   <div class="row">

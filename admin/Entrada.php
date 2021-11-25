@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel="icon" href="../browser.png">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <script src="../js/jquery-1.12.4-jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
     <title>MzMotorSport/Admin Page</title>
 </head><!--Título de pestaña, importaciones y conexiones-->
 <body>
@@ -18,23 +19,36 @@
       header("location: ../login.php");  
   } #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
 ?>
-<br>
-<div class="position-relative">
-    <div class="position-absolute top-50 start-50 translate-middle"><a href="indexadmin.html"><img src="../assets/img/MZMOTORSPORTLOGO.png" alt=""></a></div>  
-</div>
-<br><br>
-<h2><center>Pagina administrativa</center></h2>
-<br>
-<h2><center>Crear Publicacion</center></h2>
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="indexadmin.php">Regresar al Dashboard</a>
+    </div>
+  </div>
+</nav> <!-- Navbar sencilla que regresa al Dashboard -->
+  <div class="container">
+    <div class="col-lg-12">
+      <center>
+        <h1>Página Administrativa</h1>
+      </center>
+      <hr><br>
+    </div>
 <div class="container">
 <form action="insertar_contenido.php" method="post" enctype="multipart/form-data" name="form1">
-    <hr color= white width= 100%><br>
     <div class="mb-3">
         <input type="text" class="form-control" name="campo_titulo" id="campo_titulo" placeholder="Titulo">
     </div>
+    <br>
     <div class="mb-3">
         <textarea class="form-control" name="area_publi" id="area_publi" rows="3"  placeholder="Cuerpo Publicacion"></textarea>
     </div>
+    <br>
     <div class="mb-3">
         <input type="hidden" name="MAX_TAM" value="2097152">
         <input type="file" class="action-button" name="imagen" id="imagen">

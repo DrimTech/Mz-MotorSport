@@ -27,10 +27,9 @@
         <ul class="links">
           <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
           <li class="link-menu-items"><a href="../Cauto.html" class="link">Comprar</a></li>
-          <li class="link-menu-items"><a href="../Vauto.php" class="link">Vender</a></li>
-          <li class="link-menu-items"><a href="#" class="link">Pendiente</a></li>
-          <li class="link-menu-items"><a href="#" class="link--active">Contacto</a></li>
-          <li class="link-menu-items"><a href="#"><i class='bx bx-user-circle'></i></a></li>
+          <li class="link-menu-items"><a href=" Vauto.php" class="link">Vender</a></li>
+          <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
+          <li class="link-menu-items"><a href="usuarios_portada.php"><i class='bx bx-user-circle'></i></a></li>
         </ul>
       </div>
     </nav>

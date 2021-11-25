@@ -10,7 +10,7 @@
     <nav class="nav_hero">
       <div class="container nav_container">
         <div class="logo">
-          <img class="logo_name" src="assets/img/MZMOTORSPORTLOGO.png" alt="">
+          <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
         </div>
         <ul class="links">
           <li class="link-menu-items"><a href="index.html" class="link">Inicio</a></li>
