@@ -56,10 +56,10 @@ if(isset($_REQUEST['btn_login']))
 								$loginMsg="Admin: Inicio sesión con éxito";	
 									header("refresh:2;indexadmin.php");	
 								break;
-							case "personal";
+							case "adminval";
 								$_SESSION["personal_login"]=$email;				
 								$loginMsg="Personal: Inicio sesión con éxito";		
-								header("refresh:3;./personal/personal_portada.php");	
+								header("refresh:3;/personal/personal_portada.php");	
 								break;	
 							default:
 								$errorMsg[]="Correo electrónico o contraseña o rol incorrectos";
@@ -168,7 +168,7 @@ if(isset($_REQUEST['btn_login']))
 							<select class="form-control" name="txt_role">
 							  <option value="" selected="selected"> - selecccionar rol - </option>
 							  <option value="admin">Admin</option>
-							  <option value="personal">Personal</option>
+							  <option value="adminval">Personal</option>
 							  <!--<option value="usuario">Usuarios</option>-->
 							</select>
 						</div>
