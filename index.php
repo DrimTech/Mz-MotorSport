@@ -40,7 +40,7 @@ require_once 'DBconect.php';
 session_start();
 if(isset($_SESSION["admin_login"]))	//Condicion admin
 {
-	header("location: admin/admin_portada.php");	
+	header("location: admin/indexadmin.php");	
 }
 if(isset($_SESSION["personal_login"]))	//Condicion personal
 {
@@ -48,7 +48,7 @@ if(isset($_SESSION["personal_login"]))	//Condicion personal
 }
 if(isset($_SESSION["usuarios_login"]))	//Condicion Usuarios
 {
-	header("location: usuarios/usuarios_portada.php");
+	header("location: /index.html");
 }
 
 if(isset($_REQUEST['btn_login']))	

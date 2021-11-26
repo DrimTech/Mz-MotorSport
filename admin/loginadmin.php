@@ -3,7 +3,7 @@ require_once '../DBconect.php';
 session_start();
 if(isset($_SESSION["admin_login"]))	//Condicion admin
 {
-	header("location: admin/admin_portada.php");	
+	header("location: admin/indexadmin.php");	
 }
 if(isset($_SESSION["personal_login"]))	//Condicion personal
 {
