@@ -31,9 +31,9 @@
     <!---->
     <div class="col">
      <div class="p-3 pb-5 mt-3 bg-light" style="border-radius: 15px;">
-       <h4>Vista de compra</h4>
-       <small>Listado de publicaciones aprobadas</small><br><br>
-       <a href="../comprar_auto.php" class="btn btn-primary float-end">Entrar</a>
+       <h4>Ver Pagina</h4>
+       <small>Ver pagina en modo usuario</small><br><br>
+       <a href="../index.html" class="btn btn-primary float-end">Entrar</a>
       </div>
     </div>
     <!---->

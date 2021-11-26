@@ -17,7 +17,7 @@
                 <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
             </div>
             <ul class="links">
-                <li class="link-menu-items"><a href="usuarios_portada.php" class="link">Regresar al panel de usuario</a></li>
+                <li class="link-menu-items"><a href="Vauto.php" class="btn btn-primary">Regresar al panel de venta</a></li>
             </ul>
             </div>
     </nav>

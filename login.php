@@ -3,7 +3,7 @@ include 'DBconect.php';
 @session_start();
 if(isset($_SESSION["admin_login"]))	//Condicion admin
 {
-	header("location:admin/admin_portada.php");	
+	header("location:admin/indexadmin.php");	
 }
 if(isset($_SESSION["personal_login"]))	//Condicion personal
 {
@@ -11,7 +11,7 @@ if(isset($_SESSION["personal_login"]))	//Condicion personal
 }
 if(isset($_SESSION["usuarios_login"]))	//Condicion Usuarios
 {
-	header("location:usuarios/usuarios_portada.php");
+	header("location:usuarios/Vauto.php");
 }
 if(isset($_REQUEST['btn_login']))	
 {
@@ -54,7 +54,7 @@ if(isset($_REQUEST['btn_login']))
 							case "admin":
 								$_SESSION["admin_login"]=$email;			
 								$loginMsg="Admin: Inicio sesión con éxito";	
-								header("refresh:1;admin/admin_portada.php");	
+								header("refresh:1;admin/indexadmin.php");	
 								break;
 							case "personal";
 								$_SESSION["personal_login"]=$email;				
@@ -62,7 +62,7 @@ if(isset($_REQUEST['btn_login']))
 								header("refresh:1;personal/personal_portada.php");	
 								break;
 							case "usuario":
-								header("refresh:1;/usuarios/usuarios_portada.php");	
+								header("refresh:1;/usuarios/Vauto.php");	
 								$_SESSION["usuarios_login"]=$email;				
 								$loginMsg="Usuario: Inicio sesión con éxito";	
 								break;

@@ -26,23 +26,32 @@
         </div>
         <ul class="links">
           <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
-          <li class="link-menu-items"><a href="../Cauto.html" class="link">Comprar</a></li>
+          <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
           <li class="link-menu-items"><a href=" Vauto.php" class="link">Vender</a></li>
           <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
-          <li class="link-menu-items"><a href="usuarios_portada.php"><i class='bx bx-user-circle'></i></a></li>
+          <li class="link-menu-items"><a href="../cerrar_sesion.php" class="btn btn-danger">Cerrar Sesion</a></li>
         </ul>
       </div>
     </nav>
 </header>
 <section class="container">
-  <h1>Vender tu Auto</h1>
+  <h2 style = "color:#0d6efd;">
+<?php if(isset($_SESSION['usuarios_login']))
+				{
+				?>
+					
+				<?php
+						echo $_SESSION['usuarios_login'];
+				}
+				?>
+				</h2>
   <h3>La forma mas sencilla de vender tu Auto</h3>
   <div class="row">
    <div class="col">
      <div class="p-3 pb-5 bg-light">
        <h4>Cuestionario de venta</h4>
        <p>Iniciar cuestionario de venta para generar una publicacion</p><br>
-       <button type="button" id="btn-nueva-cita" class="btn btn-primary d-inline float-end shadow"><a href="FormVenderAuto.html" style="color:rgb(255, 255, 255);"> Vender <i class='bx bxs-plus-square' ></i></a></button>
+       <button type="button" id="btn-nueva-cita" class="btn btn-primary d-inline float-end shadow"><a href="FormVenderAuto.php" style="color:rgb(255, 255, 255);"> Vender <i class='bx bxs-plus-square' ></i></a></button>
       </div>
     </div>
   </div>
