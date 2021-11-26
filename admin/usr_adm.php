@@ -13,7 +13,7 @@ if(!isset($_SESSION['admin_login']))
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-    <title>Administrador de publicaciones</title>
+    <title>Administrador de usuarios</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <link rel="icon" href="../browser.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -73,7 +73,7 @@ if(!isset($_SESSION['admin_login']))
             <!--<a href="../cerrar_sesion.php"><button class="btn btn-danger text-left"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cerrar Sesion</button></a>-->
             <hr><br>
             <br>
-            </div>
+        </div>
             <br><br><br>
             <div class="row">
             <div class="col-lg-12">
