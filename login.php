@@ -32,7 +32,7 @@ if(isset($_REQUEST['btn_login']))
 	{
 		try
 		{
-			$select_stmt=$db->prepare("SELECT email,pwd,role FROM usuarios WHERE email=:uemail AND pwd=:upassword AND role=:urole"); 
+			$select_stmt=$db->prepare("SELECT username,email,pwd,role FROM usuarios WHERE email=:uemail AND pwd=:upassword AND role=:urole");
 			$select_stmt->bindParam(":uemail",$email);
 			$select_stmt->bindParam(":upassword",$password);
 			$select_stmt->bindParam(":urole",$role);

@@ -38,14 +38,11 @@
   <h2 style = "color:#0d6efd;">
 <?php if(isset($_SESSION['usuarios_login']))
 				{
-				?>
-					
-				<?php
-						echo $_SESSION['usuarios_login'];
+						echo "Bienvenido a MZMotorsport";
 				}
 				?>
 				</h2>
-  <h3>La forma mas sencilla de vender tu Auto</h3>
+  <h3>La forma <strong>más sencilla</strong> de vender tu Auto</h3>
   <div class="row">
    <div class="col">
      <div class="p-3 pb-5 bg-light">
