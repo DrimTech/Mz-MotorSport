@@ -12,7 +12,11 @@
 <body>
 <?php
   session_start();
-  $correo = $_SESSION['usuarios_login']; 
+  if(isset($_SESSION['usuarios_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['usuarios_login'];
+  } 
   if(!isset($_SESSION['usuarios_login']))    
   {
       header("location: ../login.php");  
@@ -37,11 +41,6 @@
 </header>
 <section class="container">
   <h2 style = "color:#0d6efd;">
-<?php if(isset($_SESSION['usuarios_login']))
-				{
-						echo "Bienvenido a MZMotorsport";
-				}
-				?>
 				</h2>
   <h3>La forma <strong>más sencilla</strong> de vender tu Auto</h3>
 
@@ -59,8 +58,8 @@
   <table class="table">
     <thead class="table-ligth">
         <tr>
-            <th width="15%">Articulo</th>
-            <th width="12%">Fecha</th>
+            <th width="13%">Articulo</th>
+            <th width="15%">Fecha</th>
             <th width="10%">Autorizada</th>
             <th width="10%">Publicada</th>
             <th width="18%">Marcar como vendido</th>
@@ -70,20 +69,21 @@
     </thead>
 <?php
   $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
-  $query="SELECT articulo, fecha, estado, vendido FROM autos where email_usuario = $correo";
-  $result_contenido = mysqli_query($miconexion,$query);
+  $query="SELECT articulo, fecha, estado, vendido FROM autos where email_usuario = '$correo'";
+  if($result_contenido = mysqli_query($miconexion,$query))
+  {
   while($row=mysqli_fetch_array($result_contenido))
   {
-
   ?>
   <tr>
     <td><?php echo $row["articulo"]; ?></td>
     <td class="centro"><?php echo $row["fecha"]; ?></td>
     <td class="centro"><?php echo $row["estado"]; ?></td>
     <td class="centro"><?php echo $row["vendido"]; ?></td>
-    <td class="centro" width="7%"><a href="eliminar_entrada.php?id=<?php echo $row['id']?>" class = "btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
+    <!--<td class="centro" width="7%"><a href="eliminar_entrada.php?id=<?php echo $row['id']?>" class = "btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>-->
   </tr>
   <?php 
+  }
   }
   ?>
   </table>

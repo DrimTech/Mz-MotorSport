@@ -46,13 +46,12 @@ session_start();
 	$color 			= $_POST['color'];
 	$km 			= $_POST['km'];
 	$precio			= $_POST['precio'];
-	$contacto 		= mysqli_query($miconexion,"SELECT contacto from usuarios where email = $correo");
 	$comentario 	= $_POST['comentario'];
 	$laimagen	 	= $_FILES['imagen']['name'];
 	$fecha 			= date("Y-m-d H:i:s");
 	$vendido 		= 0;
 	$estado 		= 0;
-	$miconsulta = "INSERT INTO autos (email_usuario, articulo, modelo, color, km, precio, celular, comentario, imagen, fecha, vendido, estado) VALUES ('" . $correo ."', '" . $articulo ."', '" . $modelo ."', '" . $color ."', '" . $km ."', '" . $precio ."', '" . $contacto ."', '" . $comentario ."', '". $laimagen ."', '". $fecha ."', '". $vendido ."', '". $estado ."')"; # Inserta la entrada en la database
+	$miconsulta = "INSERT INTO autos (email_usuario, articulo, modelo, color, km, precio, comentario, imagen, fecha, vendido, estado) VALUES ('" . $correo ."', '" . $articulo ."', '" . $modelo ."', '" . $color ."', '" . $km ."', '" . $precio ."', '" . $comentario ."', '". $laimagen ."', '". $fecha ."', '". $vendido ."', '". $estado ."')"; # Inserta la entrada en la database
 	$resultado=mysqli_query($miconexion, $miconsulta);
 	mysqli_close($miconexion); 	/*Cierra conexión*/
 
@@ -67,8 +66,6 @@ session_start();
 	echo "KM SON: ",$km;
 	echo "<br>";
 	echo "Precio es: ",$precio;
-	echo "<br>";
-	echo "Celu es: ",$contacto;
 	echo "<br>";
 	echo "DESC ES: ",$comentario;
 	echo "<br>"; 

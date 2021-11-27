@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+|<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,91 +11,61 @@
 </head>
 <body>
   <!--Header-->
-  <?php require_once("./elements/header.php"); ?> <!-- Llama al header/barra de nav -->
-  <!--Header-->
-          <!--Tarjetas de carros-->
-    <section class="cars">
-      <div class="container">
-        <p class="copy_section">Comprar un Auto</p>
+<?php require_once("./elements/header.php");?>
+    <section class='cars'>
+      <div class='container'>
+        <p class='copy_section'>Comprar un Auto</p>
+      <article class='container-cards'>
+<?php
+  session_start();
+  if(isset($_SESSION['usuarios_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['usuarios_login'];
+  } 
+  if(!isset($_SESSION['usuarios_login']))    
+  {
+      header("location: ../login.php");  
+  }
+    $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
 
-      <article class="container-cards">
-        <div class="cardv2">
-          <a href="AutoVentana.php"><img src="assets/img/AutosP/AtecaCupra.jpg" class="card_img" id="img_car"></a>
-          <div class="card_text" id="tarjeta_carros">
-            <div class="card_list" id="Car_name">Cupra Ateca</div>
-            <p class="descrip_card" id="Car_descrip" >2020 - Blanca - 33,000km</p>
-            <p class="precio_auto" id="Car_precio">$$$</p>
-          </div>
-        </div>
-        <!--
-        <div class="cardv2">
-          <img src="assets/img/AutosP/AudiRS5.jpg" class="card_img">
-          <div class="card_text">
-            <div class="card_list">Audi RS5</div>
-            <p class="descrip_card">2020 - Azul - 21,923km</p>
-            <p class="precio_auto">$$$</p>
-          </div>
-        </div>
+    if(!$miconexion) {
 
-        <div class="cardv2">
-          <img src="assets/img/AutosP/Camaro2020.jpg"class="card_img">
-          <div class="card_text">
-            <div class="card_list">Chevrolet Camaro GT</div>
-            <p class="descrip_card">2019 - Azul - 10,562km</p>
-            <p class="precio_auto">$$$</p>
-          </div>
-        </div>
+        echo "La conexion ha fallado: " . mysqli_error();
+        exit();
+    }
 
-        <div class="cardv2">
-          <img src="assets/img/AutosP/CivicSI2020.jpg" class="card_img">
-          <div class="card_text">
-            <div class="card_list">Honda Civic SI</div>
-            <p class="descrip_card">2019 - Rojo - 22,321km</p>
-            <p class="precio_auto">$$$</p>
-          </div>
-        </div>
+    $miconsulta = "SELECT * FROM autos"; # Esta consulta ordena la página para que se muestre por categoría y fecha más reciente de publicación
 
-        <div class="cardv2">
-          <img src="assets/img/AutosP/KiaForteGT2020.jpg" class="card_img">
-          <div class="card_text">
-            <div class="card_list">Kia Forte GT</div>
-            <p class="descrip_card">2019 - Blanco - 11,539km</p>
-            <p class="precio_auto">$$$</p>
+    if($resultado = mysqli_query($miconexion, $miconsulta)) {
+        while($registro = mysqli_fetch_assoc($resultado)) {
+            if($registro['imagen']!=""){
+                    echo "        
+
+        <div class='cardv2'>
+          <a href='AutoVentana.php'><img src='./usuarios/imagenes/" . $registro['imagen'] . "' class='card_img' id='img_car'></a>
+
+          <div class='card_text' id='tarjeta_carros'>
+            <div class='card_list' id='Car_name'>".$registro['articulo']."</div>
+
+            <p class='descrip_card' id='Car_descrip'>admin/".$registro['modelo']." - ".$registro['color']." - ".$registro['km']."km"."</p>
+
+            <p class='precio_auto' id='Car_precio'>$
+            ".$registro['precio']."
+            </p>
           </div>
         </div>
 
-        <div class="cardv2">
-          <img src="assets/img/AutosP/mustang 2021.jpg" class="card_img">
-          <div class="card_text">
-            <div class="card_list">Ford Mustang GT V8</div>
-            <p class="descrip_card">2020 - Rojo - 4,221km</p>
-            <p class="precio_auto">$$$</p>
-          </div>
-        </div>
-        
-        <div class="cardv2">
-          <img src="assets/img/AutosP/PorscheCayenne.jpeg" class="card_img">
-          <div class="card_text">
-            <div class="card_list">Porsche Cayenne</div>
-            <p class="descrip_card">2018 - Negro - 44,231km</p>
-            <p class="precio_auto">$$$</p>
-          </div>
-        </div>
-
-        <div class="cardv2">
-          <img src="assets/img/AutosP/StingerGT2020.jpg" class="card_img">
-          <div class="card_text">
-            <div class="card_list">Kia Stringer GT</div>
-            <p class="descrip_card">2021 - Naranja - 1,000km</p>
-            <p class="precio_auto">$$$</p>
-          </div>
-        </div> -->
         <!--Tarjetas de carros(FIN)-->
+";
+            }
+        }
+        }
+     
+?>
       </article>
       </div>
-    
-  </section>  
-    
+  </section>   
     <footer class="footer">
       <div class="container footer_caption">
         <div class="footer_copy">
