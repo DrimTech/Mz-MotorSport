@@ -106,6 +106,7 @@
                     <option value="11">Gris</option>
                     <option value="12">Arena</option>
                     <option value="13">Morado</option>
+                    <option value="14">Naranja</option>
                 </select>
             </div>
             <br>

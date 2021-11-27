@@ -12,6 +12,7 @@
 <body>
 <?php
   session_start();
+  $correo = $_SESSION['usuarios_login']; 
   if(!isset($_SESSION['usuarios_login']))    
   {
       header("location: ../login.php");  
@@ -43,12 +44,14 @@
 				?>
 				</h2>
   <h3>La forma <strong>más sencilla</strong> de vender tu Auto</h3>
+
   <div class="row">
    <div class="col">
      <div class="p-3 pb-5 bg-light">
        <h4>Cuestionario de venta</h4>
        <p>Iniciar cuestionario de venta para generar una publicacion</p><br>
-       <button type="button" id="btn-nueva-cita" class="btn btn-primary d-inline float-end shadow"><a href="FormVenderAuto.php" style="color:rgb(255, 255, 255);"> Vender <i class='bx bxs-plus-square' ></i></a></button>
+          <button type="button" id="btn-nueva-cita" 
+          class="btn btn-primary d-inline float-end shadow" data-bs-toggle="modal" data-bs-target="#modal-nueva-cita" style="color:rgb(255, 255, 255);">Vender<i class='bx bxs-plus-square' ></i></button>
       </div>
     </div>
   </div>
@@ -56,18 +59,95 @@
   <table class="table">
     <thead class="table-ligth">
         <tr>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>No.Cita</th>
-            <th>Fecha</th>
+            <th width="15%">Articulo</th>
+            <th width="12%">Fecha</th>
+            <th width="10%">Autorizada</th>
+            <th width="10%">Publicada</th>
+            <th width="18%">Marcar como vendido</th>
+            <th width="18%">Marcar como disponible</th>
+            <th width="8%">Eliminar</th>
         </tr>
     </thead>
-        <!--
-        <tbody id="articulos">
-        </tbody>
-        -->
+<?php
+  $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+  $query="SELECT articulo, fecha, estado, vendido FROM autos where email_usuario = $correo";
+  $result_contenido = mysqli_query($miconexion,$query);
+  while($row=mysqli_fetch_array($result_contenido))
+  {
+
+  ?>
+  <tr>
+    <td><?php echo $row["articulo"]; ?></td>
+    <td class="centro"><?php echo $row["fecha"]; ?></td>
+    <td class="centro"><?php echo $row["estado"]; ?></td>
+    <td class="centro"><?php echo $row["vendido"]; ?></td>
+    <td class="centro" width="7%"><a href="eliminar_entrada.php?id=<?php echo $row['id']?>" class = "btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
+  </tr>
+  <?php 
+  }
+  ?>
   </table>
 </section>
+<div class="modal" tabindex="-1" id="modal-nueva-cita">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form action="insertar_articulo.php" method="post" enctype="multipart/form-data" name="form1">
+              <div class="modal-header">
+                  <h5 class="modal-title">Realizar publicación</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              &nbsp;
+              <center><small>La publicación será sometida a revisión antes de ser publicada</small></center>
+              <div class="modal-body">
+                      <!---->
+                      <div class="mb-3">
+                          <label for="automovil" class="form-label">Nombre del auto</label>
+                          <input type="text" value="" class="form-control" name="articulo" id="articulo"required placeholder="EJ: Cupra Ateca">
+                      </div> 
+                      <!---->
+                      <div class="mb-3">
+                          <label for="anio" class="form-label">Modelo</label>
+                          <input type="text" value="" class="form-control" name="modelo" id="modelo" required placeholder="Año del vehículo (ej: 2010)">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                          <label for="gamma" class="form-label">Color</label>
+                          <input type="text" value="" class="form-control" name="color" id="color" required placeholder="Color del auto">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                          <label for="distancia" class="form-label">KM</label>
+                          <input type="text" value="" class="form-control" name="km" id="km" required placeholder="Kilómetros del vehículo">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                          <label for="costo" class="form-label">Precio de venta</label>
+                          <input type="text" value="" class="form-control" name="precio" id="precio" required placeholder="Valor (ej: 50,000)">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                        <label for="cuerpo" class="form-label">Comentarios</label>
+                        <textarea class="form-control" name="comentario" id="comentario" rows="3"  placeholder="Descripción/detalles"></textarea>
+                      </div>
+                      <!---->
+                      <div class="mb-3">
+                        <center>
+                          <input type="hidden" name="MAX_TAM" value="2097152">
+                          <input type="file" class="action-button" name="imagen" id="imagen">
+                          <div class="form-text">Seleccione una imagen con tamaño inferior a 2 MB</div>
+                        </center>
+                      </div> 
+                      <!---->
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <input type="submit" class="btn btn-primary action-button" name="btn_enviar" id="btn_enviar" value="Guardar"> 
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="container footer_caption">
     <div class="footer_copy">

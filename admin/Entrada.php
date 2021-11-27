@@ -55,7 +55,7 @@
     <div class="form-text">Seleccione una imagen con tamaño inferior a 2 MB</div>
     </div>
       <div class="d-grid gap-2">
-        <input type="submit" class="btn btn-primary action-button" name="btn_enviar" id="btn_enviar" value="Guardar"> 
+        <input type="submit" class="btn btn-primary action-button" name="btn_enviar" id="btn_enviar" value="Guardar">
     </div>
 </form>
 </div>
