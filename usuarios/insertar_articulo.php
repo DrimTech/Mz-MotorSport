@@ -49,38 +49,15 @@ session_start();
 	$comentario 	= $_POST['comentario'];
 	$laimagen	 	= $_FILES['imagen']['name'];
 	$fecha 			= date("Y-m-d H:i:s");
-	$vendido 		= 0;
-	$estado 		= 0;
-	$miconsulta = "INSERT INTO autos (email_usuario, articulo, modelo, color, km, precio, comentario, imagen, fecha, vendido, estado) VALUES ('" . $correo ."', '" . $articulo ."', '" . $modelo ."', '" . $color ."', '" . $km ."', '" . $precio ."', '" . $comentario ."', '". $laimagen ."', '". $fecha ."', '". $vendido ."', '". $estado ."')"; # Inserta la entrada en la database
+	$vendido 		= 'No';
+	$estado 		= 'No';
+	$miconsulta = "INSERT INTO autos (email_usuario, articulo, modelo, color, km, precio, comentario, imagen, fecha, vendido, autorizada) VALUES ('" . $correo ."', '" . $articulo ."', '" . $modelo ."', '" . $color ."', '" . $km ."', '" . $precio ."', '" . $comentario ."', '". $laimagen ."', '". $fecha ."', '". $vendido ."', '". $estado ."')"; # Inserta la entrada en la database
 	$resultado=mysqli_query($miconexion, $miconsulta);
 	mysqli_close($miconexion); 	/*Cierra conexión*/
-
-	echo "Correo es: ",$correo;
-	echo "<br>";
-	echo "Articulo es: ",$articulo;
-	echo "<br>";
-	echo "Modelo es: ",$modelo;
-	echo "<br>";
-	echo "Color es: ",$color;
-	echo "<br>";
-	echo "KM SON: ",$km;
-	echo "<br>";
-	echo "Precio es: ",$precio;
-	echo "<br>";
-	echo "DESC ES: ",$comentario;
-	echo "<br>"; 
-	echo $laimagen;
-	echo "<br>"; 
-	echo "FECHA: ",$fecha;
-	echo "<br>";
-	echo "VENDIDO: ",$vendido;
-	echo "<br>";
-	echo "ESTADO; ",$estado;
-	echo "<br>";
 ?>
 <script type="text/javascript">
-	/*alert("Se ha agregado la publicacion exitosamente");
-	window.location.href='Vauto.php';*/
+	alert("Se ha agregado la publicacion exitosamente");
+	window.location.href='Vauto.php';
 </script>
 </body>
 </html>

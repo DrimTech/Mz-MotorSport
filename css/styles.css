@@ -301,7 +301,7 @@ body{
 }
 
 .check_item{
-    width: 30%;
+    width: 33%;
     padding-right: 10px;
     display: flex;
     border-right: 2px solid var(--black1);
@@ -396,7 +396,7 @@ body{
     }
 
     .check_item{
-        width: 45%;
+        width: 33%;
         margin-bottom: 35px;
     }
 

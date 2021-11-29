@@ -13,13 +13,13 @@
           <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
         </div>
         <ul class="links">
-          <li class="link-menu-items"><a href="index.html" class="link">Inicio</a></li>
-          <li class="link-menu-items"><a href="Cauto.php" class="link">Comprar</a></li>
-          <li class="link-menu-items"><a href="usuarios/Vauto.php" class="link">Vender</a></li>
-          <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
-          <li class="link-menu-items"><a href="login.php">Iniciar Sesión</a></li>
+          <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
+          <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
+          <li class="link-menu-items"><a href="/usuarios/Vauto.php" class="link">Vender</a></li>
+          <li class="link-menu-items"><a href="../blog/noticias.php" class="link">Noticias</a></li>
+          <li class="link-menu-items"><a href="../login.php">Iniciar Sesión</a></li>
           <li class="link-menu-items">|</li>
-          <li class="link-menu-items"><a href="registro.php">Registrarse</a></li>
+          <li class="link-menu-items"><a href="../registro.php">Registrarse</a></li>
         </ul>
       </div>
     </nav>

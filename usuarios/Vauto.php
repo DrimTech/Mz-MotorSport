@@ -7,6 +7,18 @@
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
    <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <link rel="icon" href="../browser.png">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<style type="text/css">
+  td.centro{
+    text-align: center;
+  }
+  th.centro{
+    text-align: center;
+  }
+</style>
+
   <title>MzMotorSport</title>
 </head>
 <body>
@@ -34,6 +46,7 @@
           <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
           <li class="link-menu-items"><a href=" Vauto.php" class="link">Vender</a></li>
           <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
+          <?php echo $correo;?>
           <li class="link-menu-items"><a href="../cerrar_sesion.php" class="btn btn-danger">Cerrar Sesion</a></li>
         </ul>
       </div>
@@ -58,18 +71,19 @@
   <table class="table">
     <thead class="table-ligth">
         <tr>
-            <th width="13%">Articulo</th>
-            <th width="15%">Fecha</th>
-            <th width="10%">Autorizada</th>
-            <th width="10%">Publicada</th>
-            <th width="18%">Marcar como vendido</th>
-            <th width="18%">Marcar como disponible</th>
-            <th width="8%">Eliminar</th>
+            <th width="10%">Articulo</th>
+            <th class="centro">Modelo</th>
+            <th class="centro" width="15%">Fecha</th>
+            <th class="centro" width="10%">Autorizada</th>
+            <th class="centro" width="10%">Publicada</th>
+            <th class="centro" width="15%">Marcar como vendido</th>
+            <th class="centro" width="15%">Marcar como disponible</th>
+            <th class="centro" width="8%">Eliminar</th>
         </tr>
     </thead>
 <?php
   $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
-  $query="SELECT articulo, fecha, estado, vendido FROM autos where email_usuario = '$correo'";
+  $query="SELECT id,email_usuario,articulo,modelo, fecha, autorizada, vendido FROM autos where email_usuario = '$correo'";
   if($result_contenido = mysqli_query($miconexion,$query))
   {
   while($row=mysqli_fetch_array($result_contenido))
@@ -77,10 +91,13 @@
   ?>
   <tr>
     <td><?php echo $row["articulo"]; ?></td>
+    <td class="centro"><?php echo $row['modelo'];?></td>
     <td class="centro"><?php echo $row["fecha"]; ?></td>
-    <td class="centro"><?php echo $row["estado"]; ?></td>
+    <td class="centro"><?php echo $row["autorizada"]; ?></td>
     <td class="centro"><?php echo $row["vendido"]; ?></td>
-    <!--<td class="centro" width="7%"><a href="eliminar_entrada.php?id=<?php echo $row['id']?>" class = "btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>-->
+    <td class="centro" width="18%"><a href="marcar_vendido.php?id=<?php echo $row['id']?>" class = "btn btn-success" name="btn_borrar_user"><span class="glyphicon glyphicon-usd" aria-hidden="true"></a></span></td>    
+    <td class="centro" width="18%"><a href="marcar_disponible.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></a></span></td>
+    <td class="centro" width="8%"><a href="eliminar_articulo.php?id=<?php echo $row['id']?>" class = "btn btn-danger" name="btn_borrar_user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
   </tr>
   <?php 
   }
