@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2021 a las 17:12:49
+-- Tiempo de generación: 29-11-2021 a las 10:07:47
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `mz_motorsports`
 --
-CREATE DATABASE IF NOT EXISTS `mz_motorsports` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `mz_motorsports`;
 
 -- --------------------------------------------------------
 
@@ -30,6 +28,7 @@ USE `mz_motorsports`;
 --
 
 CREATE TABLE `autos` (
+  `id` int(11) NOT NULL,
   `email_usuario` varchar(30) NOT NULL,
   `articulo` varchar(40) NOT NULL,
   `modelo` varchar(30) NOT NULL,
@@ -39,17 +38,17 @@ CREATE TABLE `autos` (
   `comentario` varchar(11) NOT NULL,
   `imagen` varchar(60) NOT NULL,
   `fecha` datetime NOT NULL,
-  `vendido` bit(1) NOT NULL,
-  `estado` bit(1) NOT NULL
+  `vendido` varchar(5) NOT NULL,
+  `autorizada` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `autos`
 --
 
-INSERT INTO `autos` (`email_usuario`, `articulo`, `modelo`, `color`, `km`, `precio`, `comentario`, `imagen`, `fecha`, `vendido`, `estado`) VALUES
-('eochoa11@ucol.mx', 'Camaro', '2009', 'Amarillo', '10000', '100000', 'ASASASASA', 'camaro.jpg', '2021-11-27 10:17:15', b'1', b'1'),
-('elpepe@gmail.com', 'Challenger', '2008', 'Azul', '13333', '133333', 'PRUEBITAAAA', 'dodge-challenger-hellcat-redeye-portada.jpg', '2021-11-27 15:53:20', b'1', b'1');
+INSERT INTO `autos` (`id`, `email_usuario`, `articulo`, `modelo`, `color`, `km`, `precio`, `comentario`, `imagen`, `fecha`, `vendido`, `autorizada`) VALUES
+(1, 'eochoa11@ucol.mx', 'Camaro', '2009', 'Amarillo', '10000', '100000', 'ASASASASA', 'camaro.jpg', '2021-11-27 10:17:15', 'Si', 'Si'),
+(2, 'elpepe@gmail.com', 'Challenger', '2008', 'Azul', '13333', '133333', 'PRUEBITAAAA', 'dodge-challenger-hellcat-redeye-portada.jpg', '2021-11-27 15:53:20', 'Si', 'Si');
 
 -- --------------------------------------------------------
 
@@ -109,6 +108,7 @@ INSERT INTO `usuarios` (`id`, `username`, `nombre`, `apellidos`, `email`, `conta
 -- Indices de la tabla `autos`
 --
 ALTER TABLE `autos`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `email_usuario` (`email_usuario`);
 
 --
@@ -128,6 +128,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `autos`
+--
+ALTER TABLE `autos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `noticias`

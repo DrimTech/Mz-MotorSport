@@ -22,11 +22,17 @@
   {
     global $correo;
     $correo = $_SESSION['usuarios_login'];
-  } 
-  if(!isset($_SESSION['usuarios_login']))    
-  {
-      header("location: ../login.php");  
   }
+  if(isset($_SESSION['personal_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['personal_login'];
+  } 
+  if(isset($_SESSION['admin_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['admin_login'];
+  } 
     $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
 
     if(!$miconexion) {
@@ -35,7 +41,7 @@
         exit();
     }
 
-    $miconsulta = "SELECT * FROM autos"; # Esta consulta ordena la página para que se muestre por categoría y fecha más reciente de publicación
+    $miconsulta = "SELECT * FROM autos WHERE vendido = 'Si' and autorizada = 'Si'"; # Esta consulta ordena la página para que se muestre por categoría y fecha más reciente de publicación
 
     if($resultado = mysqli_query($miconexion, $miconsulta)) {
         while($registro = mysqli_fetch_assoc($resultado)) {
@@ -43,12 +49,12 @@
                     echo "        
 
         <div class='cardv2'>
-          <a href='AutoVentana.php'><img src='./usuarios/imagenes/" . $registro['imagen'] . "' class='card_img' id='img_car'></a>
+          <a href= 'AutoVentana.php/" .  "?id=". $registro['id'] . "'><img src='./usuarios/imagenes/" . $registro['imagen'] . "' class='card_img' id='img_car'></a>
 
           <div class='card_text' id='tarjeta_carros'>
             <div class='card_list' id='Car_name'>".$registro['articulo']."</div>
 
-            <p class='descrip_card' id='Car_descrip'>admin/".$registro['modelo']." - ".$registro['color']." - ".$registro['km']."km"."</p>
+            <p class='descrip_card' id='Car_descrip'>".$registro['modelo']." - ".$registro['color']." - ".$registro['km']."km"."</p>
 
             <p class='precio_auto' id='Car_precio'>$
             ".$registro['precio']."
@@ -61,7 +67,6 @@
             }
         }
         }
-     
 ?>
       </article>
       </div>
