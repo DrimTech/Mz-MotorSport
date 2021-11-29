@@ -1,151 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-<title>Administrador de publicaciones</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-<link rel="icon" href="../browser.png">
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-<script src="../js/jquery-1.12.4-jquery.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+   <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <link rel="icon" href="../browser.png">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 <style type="text/css">
-
-  .login-form {
-    width: 340px;
-      margin: 20px auto;
+  td.centro{
+    text-align: center;
   }
-    .login-form form {
-      margin-bottom: 15px;
-        background: #f7f7f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-    .login-form h2 {
-        margin: 0 0 15px;
-    }
-    .form-control, .btn {
-        min-height: 38px;
-        border-radius: 2px;
-    }
-    .btn {        
-        font-size: 15px;
-        font-weight: bold;
-    }
+  th.centro{
+    text-align: center;
+  }
+</style>
 
-    h1, h2, h3, h4 {
-      color: black;
-    }
-
-    th, .centro {
-      text-align: center;
-    }
-    
-</style> <!-- Estilos del form que presenta la lista de publicaciones -->
+  <title>MzMotorSport</title>
 </head>
+<body>
+<?php
+  session_start();
+  if(isset($_SESSION['admin_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['admin_login'];
+  } 
+  if(!isset($_SESSION['admin_login']))    
+  {
+      header("location: ../login.php");  
+  }
+?>
+  <!--Header-->
+  <header class="herov2">
+    <nav class="nav_hero">
+      <div class="container nav_container">
+        <div class="logo">
+          <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
+        </div>
+        <ul class="links">
+          <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
+          <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
+          <li class="link-menu-items"><a href=" Vauto.php" class="link">Vender</a></li>
+          <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
+          <?php echo $correo;?>
+          <li class="link-menu-items"><a href="../cerrar_sesion.php" class="btn btn-danger">Cerrar Sesion</a></li>
+        </ul>
+      </div>
+    </nav>
+</header>
+<section class="container">
+  <h2 style = "color:#0d6efd;">
+        </h2>
+  <h3>La forma <strong>más sencilla</strong> de vender tu Auto</h3>
+  <br><br>
+  <table class="table">
+    <thead class="table-ligth">
+        <tr>
+            <th width="10%">Articulo</th>
+            <th class="centro">Modelo</th>
+            <th class="centro" width="15%">Fecha</th>
+            <th class="centro" width="10%">Autorizada</th>
+            <th class="centro" width="10%">Publicada</th>
+            <th class="centro" width="10%">Ver articulo</th>
+            <th class="centro" width="15%">Autorizar</th>
+            <th class="centro" width="8%">Eliminar</th>
+        </tr>
+    </thead>
+<?php
+  $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+  $query="SELECT * FROM autos";
+  if($result_contenido = mysqli_query($miconexion,$query))
+  {
+  while($row=mysqli_fetch_array($result_contenido))
+  {
+  ?>
+  <tr>
+    <td><?php echo $row["articulo"]; ?></td>
+    <td class="centro"><?php echo $row['modelo'];?></td>
+    <td class="centro"><?php echo $row["fecha"]; ?></td>
+    <td class="centro"><?php echo $row["autorizada"]; ?></td>
+    <td class="centro"><?php echo $row["vendido"]; ?></td>
+    <td class="centro" width="15%">
+      <a href="../AutoVentana.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></a></span>
+    </td>   
+    <td class="centro" width="18%"><a href="../personal/autorizar_articulo.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></a></span></td>
+    <td class="centro" width="8%"><a href="../usuarios/eliminar_articulo.php?id=<?php echo $row['id']?>" class = "btn btn-danger" name="btn_borrar_user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
+  </tr>
+  <?php 
+  }
+  }
+  ?>
+  </table>
+</section>
+<div class="modal" tabindex="-1" id="modal-nueva-cita">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form action="insertar_articulo.php" method="post" enctype="multipart/form-data" name="form1">
+              <div class="modal-header">
+                  <h5 class="modal-title">Realizar publicación</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              &nbsp;
+              <center><small>La publicación será sometida a revisión antes de ser publicada</small></center>
+              <div class="modal-body">
+                      <!---->
+                      <div class="mb-3">
+                          <label for="automovil" class="form-label">Nombre del auto</label>
+                          <input type="text" value="" class="form-control" name="articulo" id="articulo"required placeholder="EJ: Cupra Ateca">
+                      </div> 
+                      <!---->
+                      <div class="mb-3">
+                          <label for="anio" class="form-label">Modelo</label>
+                          <input type="text" value="" class="form-control" name="modelo" id="modelo" required placeholder="Año del vehículo (ej: 2010)">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                          <label for="gamma" class="form-label">Color</label>
+                          <input type="text" value="" class="form-control" name="color" id="color" required placeholder="Color del auto">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                          <label for="distancia" class="form-label">KM</label>
+                          <input type="text" value="" class="form-control" name="km" id="km" required placeholder="Kilómetros del vehículo">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                          <label for="costo" class="form-label">Precio de venta</label>
+                          <input type="text" value="" class="form-control" name="precio" id="precio" required placeholder="Valor (ej: 50,000)">
+                      </div>
+                      <!---->
+                       <div class="mb-3">
+                        <label for="cuerpo" class="form-label">Comentarios</label>
+                        <textarea class="form-control" name="comentario" id="comentario" rows="3"  placeholder="Descripción/detalles"></textarea>
+                      </div>
+                      <!---->
+                      <div class="mb-3">
+                        <center>
+                          <input type="hidden" name="MAX_TAM" value="2097152">
+                          <input type="file" class="action-button" name="imagen" id="imagen">
+                          <div class="form-text">Seleccione una imagen con tamaño inferior a 2 MB</div>
+                        </center>
+                      </div> 
+                      <!---->
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <input type="submit" class="btn btn-primary action-button" name="btn_enviar" id="btn_enviar" value="Guardar"> 
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
 
-<body style="background-color: #FFFFF;">
-
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="indexadmin.php">Regresar al Dashboard</a>
+<footer class="footer">
+  <div class="container footer_caption">
+    <div class="footer_copy">
+      <p class=".copyright">MzMotorSport &copy; 2021 Todos los derechos reservados</p>
     </div>
   </div>
-</nav> <!-- Navbar sencilla que regresa al Dashboard -->
-
-<div class="wrapper">
-
-<div class="container">
-    
-  <div class="col-lg-12"> 
-
-    <center>
-      <h1>Página Administrativa</h1>
-      <h3>
-      <?php
-      session_start();
-
-      if(!isset($_SESSION['personal_login']))  
-      {
-        header("location: ../logadmin.php");  
-      } #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
-      ?>
-            
-      </h3>
-    </center>
-
-    <!--<a href="../cerrar_sesion.php"><button class="btn btn-danger text-left"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cerrar Sesion</button></a>-->
-    <hr><br><br>
-  </div>
-
-  <br><br><br>
-
-  <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading"> Panel de publicaciones</div>
-                    <!-- Titulo del table -->
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
-                                
-                                <thead>
-                                    <tr>
-                                        <th width="3%" style="text-align: center;">ID</th>
-                                        <th width="15%">Articulo</th>
-                                        <th width="13%">Fecha de post</th>
-                                        <th width="6%">Ver</th>
-                                        <th width="6%">Editar</th>
-                                        <th width="6%">Eliminar</th>
-                                    </tr>
-                                </thead> <!-- Columnas de la tabla administrativa -->
-
-                                <tbody>
-
-                <?php
-                $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");                                ;
-                $query="SELECT * FROM autos";
-                $result_contenido = mysqli_query($miconexion,$query);
-                
-                while($row=mysqli_fetch_array($result_contenido))
-                {
-
-                ?>
-                <tr>
-                    <td style="text-align: center;"><?php echo $row["id"]; ?></td>
-                    <td><?php echo $row["articulo"]; ?></td>
-                    <td class="centro"><?php echo $row["fecha"]; ?></td>
-                    <td class="centro"width="4%"><a class='btn btn-primary float-end' href= "/blog/single.php?id=<?php echo $row['id']?> "><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></a></span></td>
-                    <td class="centro" width="4%"><a href="editar_entrada.php?id=<?php echo $row['id']?>" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
-                    <td class="centro" width="7%"><a href="eliminar_entrada.php?id=<?php echo $row['id']?>" class = "btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
-                </tr>
-                <?php 
-                }
-                ?><!-- Selecciona y muestra la información de la database por fila en una tabla --> 
-
-                                </tbody>
-                                
-                            </table> 
-                        </div>
-                        <!-- tabla responsiva -->
-                    </div>
-                    <!-- panel del body -->
-                </div>
-                <!-- panel -->
-            </div>
-  
-</div>
-    
-</div>
-                  
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 </html>

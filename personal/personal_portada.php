@@ -42,7 +42,7 @@
           <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
         </div>
         <ul class="links">
-          <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
+          <li class="link-menu-items"><a href="../index.php" class="link">Inicio</a></li>
           <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
           <li class="link-menu-items"><a href=" Vauto.php" class="link">Vender</a></li>
           <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
@@ -84,7 +84,9 @@
     <td class="centro"><?php echo $row["fecha"]; ?></td>
     <td class="centro"><?php echo $row["autorizada"]; ?></td>
     <td class="centro"><?php echo $row["vendido"]; ?></td>
-    <td class="centro" width="15%"><a href="marcar_disponible.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></a></span></td>   
+    <td class="centro" width="15%">
+      <a href="../AutoVentana.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></a></span>
+    </td>  
     <td class="centro" width="18%"><a href="autorizar_articulo.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></a></span></td>
     <td class="centro" width="8%"><a href="eliminar_articulo.php?id=<?php echo $row['id']?>" class = "btn btn-danger" name="btn_borrar_user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
   </tr>

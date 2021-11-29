@@ -33,7 +33,7 @@
      <div class="p-3 pb-5 mt-3 bg-light" style="border-radius: 15px;">
        <h4>Ver Pagina</h4>
        <small>Ver pagina en modo usuario</small><br><br>
-       <a href="../index.html" class="btn btn-primary float-end">Entrar</a>
+       <a href="../index.php" class="btn btn-primary float-end">Entrar</a>
       </div>
     </div>
     <!---->

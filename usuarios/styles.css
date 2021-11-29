@@ -207,7 +207,7 @@ body{
 .card-preview {
     float: right;
     width: 28%;
-    height: 630px;
+    height: 500px;
     padding: 30px 30px;
     overflow: hidden;
     background: linear-gradient(180deg, #ffffff 0%, var(--light) 100%);
@@ -219,14 +219,14 @@ body{
 }
 
 .card_img{
-    width: 90%;
+    width: 100%;
     height: 150px;
     object-fit: cover;
 }
 .img-fluid
 {
-    max-width: 64%;
-    height: 630px;
+    width: 670px;
+    height: auto;
 }
 .card_text{
     text-align: center;
@@ -360,7 +360,7 @@ body{
 
 /* Responsive */
 
-@media screen and (max-width:1200px){
+@media screen and (max-width:1000px){
     .mockup{
         width: 600px;
         height: auto;

@@ -58,7 +58,6 @@ if(isset($_GET['id']))
         <title>MzMotorSport</title>
       </head>
 <body>
-   <?php require_once("./elements/header.php"); ?> <!-- Llama al header/barra de nav -->
 <?php 
 if($result = mysqli_query($miconexion, $query)){
     while($row = mysqli_fetch_assoc($result)){
@@ -67,19 +66,17 @@ if($result = mysqli_query($miconexion, $query)){
     <section class='services'>
     <article class='container-cards'>
       <div class='container'> 
-        <img src='/usuarios/imagenes/" .$imagen. "' class='img-fluid' alt='...' id='img_car'>
+        <img src='/usuarios/imagenes/" .$imagen. "' class='img-fluid' style='max-width:71%; height: 620px;' alt='...' id='img_car'>
             <div class='card-preview'>
                 <div class='card_textv2'>
                     <div class='card_listv2' id='Car_name'>".$articulo."</div>
                     <p class='descrip_card' id='Car_descrip'>".$modelo." - ".$color." - ".$km." km"."</p>
                     Precio: <h6 class='precio_auto' id='Car_precio'>$".$precio."</h6>     
-                    <br>
                     <p><i class='bx bx-map'></i>Manzanilllo,Colima</p>
-                    <br>
                     <h4>Descripción</h4>
                     <p>".$comentario."</p>
                     <button type='button' id='btn-generar-citacompra' 
-                    class='card_button' data-bs-toggle='modal' data-bs-target='#modal-nueva-cita'>¡Me Interesa!</button>
+                    class='card_button' data-bs-toggle='modal'data-bs-target='#modal-nueva-cita'>¡Me Interesa!</button>
                   </div>
             </div>
         </div>

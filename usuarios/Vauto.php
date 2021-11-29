@@ -42,7 +42,7 @@
           <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
         </div>
         <ul class="links">
-          <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
+          <li class="link-menu-items"><a href="../index.php" class="link">Inicio</a></li>
           <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
           <li class="link-menu-items"><a href=" Vauto.php" class="link">Vender</a></li>
           <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
@@ -152,6 +152,7 @@
                           <input type="hidden" name="MAX_TAM" value="2097152">
                           <input type="file" class="action-button" name="imagen" id="imagen">
                           <div class="form-text">Seleccione una imagen con tamaño inferior a 2 MB</div>
+                          <div class="form-text">Se recomienda que la imagen sea en resolucion FULL HD (1920 x 1080 pixeles) para evitar problemas en la validación de la publicación</div>
                         </center>
                       </div> 
                       <!---->

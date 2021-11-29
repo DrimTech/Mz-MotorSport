@@ -6,33 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-   <link rel="stylesheet" href="css/styles.css">
+   <link rel="stylesheet" href="/css/styles.css">
   <title>MzMotorSport</title>
 </head>
 <body>
   <!--Header-->
-<?php require_once("./elements/header.php");?>
+<?php include("./elements/header.php");?>
     <section class='cars'>
       <div class='container'>
         <p class='copy_section'>Comprar un Auto</p>
       <article class='container-cards'>
-<?php
-  session_start();
-  if(isset($_SESSION['usuarios_login']))
-  {
-    global $correo;
-    $correo = $_SESSION['usuarios_login'];
-  }
-  if(isset($_SESSION['personal_login']))
-  {
-    global $correo;
-    $correo = $_SESSION['personal_login'];
-  } 
-  if(isset($_SESSION['admin_login']))
-  {
-    global $correo;
-    $correo = $_SESSION['admin_login'];
-  } 
+<?php 
     $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
 
     if(!$miconexion) {

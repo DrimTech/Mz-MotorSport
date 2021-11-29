@@ -1,0 +1,38 @@
+/*
+------------------------------------------------
+Estilos de la tabla y formato de Entrada
+--------------------------------------------------
+*/
+
+.entrada
+{
+    text-align: left;
+    margin-top: 50px;
+}
+#campo_titulo
+{
+  width: 377px;   
+}
+
+h1, h2{
+	color: white;
+	text-align: center;
+}
+            
+td, tr{
+	color: black;
+	text-align:  center;
+}
+
+table{
+	transition-duration: 2s;
+	width:50%;
+	margin:auto;
+	background-color:rgb(218, 218, 218);
+	border:solid 2px #ffffff;
+	padding:5px;
+}
+            
+td{
+	padding:5px 0;
+}

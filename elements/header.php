@@ -1,26 +1,90 @@
-<!--Header-->
-<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" type="text/css" href="css/login_regis_form.css">
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
-<!-- Font Awesome CSS -->
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
-<!-- jQuery -->
-<header class="herov2">
-    <nav class="nav_hero">
-      <div class="container nav_container">
-        <div class="logo">
-          <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
+<?php
+  session_start();
+
+if(isset($_SESSION['usuarios_login']) == True)
+  {
+    global $correo;
+    $correo = $_SESSION['usuarios_login'];
+    echo "
+    <header class='herov2'>
+        <nav class='nav_hero'>
+          <div class='container nav_container'>
+            <div class='logo'>
+              <img class='logo_name' src='../assets/img/MZMOTORSPORTLOGO.png' alt=''>
+            </div>
+            <ul class='links'>
+              <li class='link-menu-items'><a href='../index.php' class='link'>Inicio</a></li>
+              <li class='link-menu-items'><a href='../Cauto.php' class='link'>Comprar</a></li>
+              <li class='link-menu-items'><a href=' Vauto.php' class='link'>Vender</a></li>
+              <li class='link-menu-items'><a href='/blog/noticias.php' class='link'>Noticias</a></li>
+              <li class='link-menu-items'>".$correo."</li>
+              <li class='link-menu-items'><a href='../cerrar_sesion.php' class='btn btn-danger'>Cerrar Sesion</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>";
+
+}elseif(isset($_SESSION['admin_login']) == True)
+  {
+    global $correo;
+    $correo = $_SESSION['admin_login'];
+    echo "
+    <header class='herov2'>
+        <nav class='nav_hero'>
+          <div class='container nav_container'>
+            <div class='logo'>
+              <img class='logo_name' src='../assets/img/MZMOTORSPORTLOGO.png' alt=''>
+            </div>
+            <ul class='links'>
+              <li class='link-menu-items'><a href='../index.php' class='link'>Inicio</a></li>
+              <li class='link-menu-items'><a href='../Cauto.php' class='link'>Comprar</a></li>
+              <li class='link-menu-items'><a href='/blog/noticias.php' class='link'>Noticias</a></li>
+              <li class='link-menu-items'>".$correo."</li>
+              <li class='link-menu-items'><a href='../cerrar_sesion.php' class='btn btn-danger'>Cerrar Sesion</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>";
+}
+elseif(isset($_SESSION['personal_login']) == True)
+  {
+    global $correo;
+    $correo = $_SESSION['personal_login'];
+    echo "
+    <header class='herov2'>
+        <nav class='nav_hero'>
+          <div class='container nav_container'>
+            <div class='logo'>
+              <img class='logo_name' src='../assets/img/MZMOTORSPORTLOGO.png' alt=''>
+            </div>
+            <ul class='links'>
+              <li class='link-menu-items'><a href='../index.php' class='link'>Inicio</a></li>
+              <li class='link-menu-items'><a href='../Cauto.php' class='link'>Comprar</a></li>
+              <li class='link-menu-items'><a href='/blog/noticias.php' class='link'>Noticias</a></li>
+              <li class='link-menu-items'>".$correo."</li>
+              <li class='link-menu-items'><a href='../cerrar_sesion.php' class='btn btn-danger'>Cerrar Sesion</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>";
+}else{
+  echo"
+  <header class='hero'>
+    <nav class='nav_hero'>
+      <div class='container nav_container'>
+        <div class='logo'>
+          <img class='logo_name' src='assets/img/MZMOTORSPORTLOGO.png' alt=''>
         </div>
-        <ul class="links">
-          <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
-          <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
-          <li class="link-menu-items"><a href="/usuarios/Vauto.php" class="link">Vender</a></li>
-          <li class="link-menu-items"><a href="../blog/noticias.php" class="link">Noticias</a></li>
-          <li class="link-menu-items"><a href="../login.php">Iniciar Sesión</a></li>
-          <li class="link-menu-items">|</li>
-          <li class="link-menu-items"><a href="../registro.php">Registrarse</a></li>
+        <ul class='links'>
+          <li class='link-menu-items'><a href='index.php' class='link'>Inicio</a></li>
+          <li class='link-menu-items'><a href='Cauto.php' class='link'>Comprar</a></li>
+          <li class='link-menu-items'><a href='usuarios/Vauto.php' class='link'>Vender</a></li>
+          <li class='link-menu-items'><a href='blog/noticias.php' class='link'>Noticias</a></li>
+          <li class='link-menu-items'><a href='login.php'>Iniciar Sesión</a></li>
+          <li class='link-menu-items'>|</li>
+          <li class='link-menu-items'><a href='registro.php'>Registrarse</a></li>
         </ul>
       </div>
     </nav>
-  </header>
+";}
+?>

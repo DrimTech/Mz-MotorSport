@@ -1,225 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-<title>Multiusuarios PHP MySQL: Niveles de Usuarios</title>
-		
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<script src="js/jquery-1.12.4-jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<style type="text/css">
-	.login-form {
-		width: 340px;
-    	margin: 20px auto;
-	}
-    .login-form form {
-    	margin-bottom: 15px;
-        background: #f7f7f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 25px;
-        border-radius: 30px;
-    }
-    .login-form h2 {
-        margin: 0 0 15px;
-    }
-    .form-control, .btn {
-        min-height: 38px;
-        border-radius: 2px;
-    }
-    .btn {        
-        font-size: 15px;
-        font-weight: bold;
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/login_regis_form.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+<!-- Font Awesome CSS -->
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+<!-- jQuery -->
+  <title>MzMotorSport</title>
 </head>
-	<body>
-<?php
-require_once 'DBconect.php';
-session_start();
-if(isset($_SESSION["admin_login"]))	//Condicion admin
-{
-	header("location: admin/indexadmin.php");	
-}
-if(isset($_SESSION["personal_login"]))	//Condicion personal
-{
-	header("location: personal/personal_portada.php"); 
-}
-if(isset($_SESSION["usuarios_login"]))	//Condicion Usuarios
-{
-	header("location: /index.html");
-}
-
-if(isset($_REQUEST['btn_login']))	
-{
-	$email		=$_REQUEST["txt_email"];	//textbox nombre "txt_email"
-	$password	=$_REQUEST["txt_password"];	//textbox nombre "txt_password"
-	$role		=$_REQUEST["txt_role"];		//select opcion nombre "txt_role"
-		
-	if(empty($email)){						
-		$errorMsg[]="Por favor ingrese Email";	//Revisar email
-	}
-	else if(empty($password)){
-		$errorMsg[]="Por favor ingrese Password";	//Revisar password vacio
-	}
-	else if(empty($role)){
-		$errorMsg[]="Por favor seleccione rol ";	//Revisar rol vacio
-	}
-	else if($email AND $password AND $role)
-	{
-		try
-		{
-			$select_stmt=$db->prepare("SELECT email,pwd,role FROM usuarios WHERE email=:uemail AND pwd=:upassword AND role=:urole"); 
-			
-			$select_stmt->bindParam(":uemail",$email);
-			$select_stmt->bindParam(":upassword",$password);
-			$select_stmt->bindParam(":urole",$role);
-			$select_stmt->execute();	//execute query
-					
-			while($row=$select_stmt->fetch(PDO::FETCH_ASSOC))	
-			{
-				$dbemail	=$row["email"];
-				$dbpassword	=$row["pwd"];
-				$dbrole		=$row["role"];
-			}
-			if($email!=null AND $password!=null AND $role!=null)	
-			{
-				if($select_stmt->rowCount()>0)
-				{
-					if($email==$dbemail and $password==$dbpassword and $role==$dbrole)
-					{
-						switch($dbrole)		//inicio de sesión de usuario base de roles
-						{
-							case "admin":
-								$_SESSION["admin_login"]=$email;			
-								$loginMsg="Admin: Inicio sesión con éxito";	
-								header("refresh:3;admin/indexadmin.php");	
-								break;
-								
-							case "personal";
-								$_SESSION["personal_login"]=$email;				
-								$loginMsg="Personal: Inicio sesión con éxito";		
-								header("refresh:3;personal/personal_portada.php");	
-								break;
-								
-							case "usuarios":
-								$_SESSION["usuarios_login"]=$email;				
-								$loginMsg="Usuario: Inicio sesión con éxito";	
-								header("refresh:3;usuarios/usuarios_portada.php");		
-								break;
-								
-							default:
-								$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
-						}
-					}
-					else
-					{
-						$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
-					}
-				}
-				else
-				{
-					$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
-				}
-			}
-			else
-			{
-				$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
-			}
-		}
-		catch(PDOException $e)
-		{
-			$e->getMessage();
-		}		
-	}
-	else
-	{
-		$errorMsg[]="correo electrónico o contraseña o rol incorrectos";
-	}
-}
-include("elements/headerv2.php");
-?>
-
-	
-	<div class="wrapper">
-	
-	<div class="container">
-			
-		<div class="col-lg-12">
-		
-		<?php
-		if(isset($errorMsg))
-		{
-			foreach($errorMsg as $error)
-			{
-			?>
-				<div class="alert alert-danger">
-					<strong><?php echo $error; ?></strong>
-				</div>
-            <?php
-			}
-		}
-		if(isset($loginMsg))
-		{
-		?>
-			<div class="alert alert-success">
-				<strong>ÉXITO ! <?php echo $loginMsg; ?></strong>
-			</div>
-        <?php
-		}
-		?> 
-
-
-<div class="login-form">
-<center><h2>Iniciar sesión</h2></center>
-<form method="post" class="form-horizontal">
-  <div class="form-group">
-  <label class="col-sm-6 text-left">Email</label>
-  <div class="col-sm-12">
-  <input type="text" name="txt_email" class="form-control" placeholder="Ingrese email" />
-  </div>
-  </div>
-      
-  <div class="form-group">
-  <label class="col-sm-6 text-left">Password</label>
-  <div class="col-sm-12">
-  <input type="password" name="txt_password" class="form-control" placeholder="Ingrese passowrd" />
-  </div>
-  </div>
-      
-  <div class="form-group">
-      <label class="col-sm-6 text-left">Seleccionar rol</label>
-      <div class="col-sm-12">
-      <select class="form-control" name="txt_role">
-          <option value="" selected="selected"> - selecccionar rol - </option>
-          <option value="admin">Admin</option>
-          <option value="personal">Personal</option>
-          <option value="usuarios">Usuarios</option>
-      </select>
+<body>
+  <!--HEADER MAIN-->
+<?php include "elements/header.php"; ?>
+    <section class="container hero_main">
+      <div class="hero_textos">
+        <h1 class="title">El mejor lugar<span class="title--active"> Para comprar un Deportivo</span></h1>
+        <p class="copy">Nos encargamos de llevar tu experiencia de compra al<span class="copy_active"> siguiente nivel</span></p>
+        <a href="Cauto.php" class="cta">Comprar un carro</a>
       </div>
+      <img src="assets/img/mockup.png" class="mockup">
+    </section>
+  </header>
+   <!--HEADER MAIN-->
+<!--Seccion Main de la Pagina-->
+  <main>
+    <section class="services">
+      <div class="container">
+        <h2 class="subtitles">Nuestros servicios </h2>
+        <p class="copy_section">Los mejores Deportivos a los Mejores precios</p>
+        <!--Tarjetas de servicios-->
+        <article class="container-cards">
+        <div class="card">
+          <img src="assets/img/ComprarD.jpg" class="card_img">
+          <div class="card_text">
+            <div class="card_list">Comprar un Auto</div>
+            <h3 class="card_title">Venta de Deportivos</h3>
+            <p class="card_copy"> Somos la pagina No.1 de venta de autos deportivos en el estado ¡Tu futuro auto esta a unos clicks! </p>
+            <a href="Cauto.php" class="card_button">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/VenderD.jpg" class="card_img">
+          <div class="card_text">
+            <div class="card_list">Vender un Auto</div>
+            <h3 class="card_title">Compramos su Deportivo</h3>
+            <p class="card_copy">Nuestra venta de automoviles es la mas eficaz y segurad de todo el pais ¡Vender tu auto nunca fue tan facil!</p>
+            <a href="usuarios/Vauto.php" class="card_button">Vender</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/MzMockupBlog.png" class="card_img">
+          <div class="card_text">
+            <div class="card_list">Seccion de Noticias</div>
+            <h3 class="card_title">Noticias</h3>
+            <p class="card_copy">Visita nuestro blog personal donde te puedes enterar de todas las noticias del mundo automotriz y nuestros avisos importantes</p>
+            <a href="" class="card_button">Ver</a>
+          </div>
+        </div>
+        <!--Tarjetas de servicios(FIN)-->
+        </article>
+        </section>
+        <section class="email container container--modifier">
+        <h2 class="subtitle subtitle--modifier">
+        Somos tu mejor opcion para adquirir un deportivo en todo Colima</h2>
+        <p class="copy_section copy_section--modifier">En MzMotorSport lo mas importante es la comodidad de compra y venta de nuestros clientes, Su experiencia de compra y de navegacion es lo mas importante para nosotros</p>
+        <div class="check">
+          <div class="check_item">
+            <i class='bx bx-check'></i>
+            <div class="check_numbers">
+              <p class="check_number">+200</p>
+              <p class="check_copy">Ventas exitosas</p>
+            </div>
+          </div>
+          <div class="check_item">
+            <i class='bx bx-check'></i>
+            <div class="check_numbers">
+              <p class="check_number">+200</p>
+              <p class="check_copy">Compras exitosas</p>
+            </div>
+          </div>
+          <div class="check_item">
+            <i class='bx bx-check'></i>
+            <div class="check_numbers">
+              <p class="check_number">+200</p>
+              <p class="check_copy">Clientes Satisfechos</p>
+            </div>
+          </div>
+        </div>
+    </section>
   </div>
-  
-  <div class="form-group">
-  <div class="col-sm-12">
-  <input type="submit" name="btn_login" class="btn btn-success btn-block" value="Iniciar Sesion">
-  </div>
-  </div>
-  
-  <div class="form-group">
-  <div class="col-sm-12">
-  ¿No tienes una cuenta? <a href="registro.php"><p class="text-info">Registrar Cuenta</p></a>		
-  </div>
-  </div>
-      
-</form>
-</div>
-<!--Cierra div login-->
-		</div>
-		
-	</div>
-			
-	</div>
-										
-	</body>
+  </main>
+  <!--Seccion Main de la Pagina(FIN)-->
+  <footer class="footer">
+    <div class="container footer_caption">
+      <div class="footer_copy">
+        <p class=".copyright">MzMotorSport &copy; 2021 Todos los derechos reservados</p>
+      </div>
+    </div>
+<script src="../assets/js/scroll.js"></script>
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+</footer>
+</body>
 </html>
