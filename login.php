@@ -1,18 +1,6 @@
 <?php
 include 'DBconect.php';
-@session_start();
-if(isset($_SESSION["admin_login"]))	//Condicion admin
-{
-	header("location:admin/indexadmin.php");	
-}
-if(isset($_SESSION["personal_login"]))	//Condicion personal
-{
-	header("location:personal/personal_portada.php"); 
-}
-if(isset($_SESSION["usuarios_login"]))	//Condicion Usuarios
-{
-	header("location:usuarios/Vauto.php");
-}
+session_start();
 if(isset($_REQUEST['btn_login']))	
 {
 	$email		=$_REQUEST["txt_email"];	//textbox nombre "txt_email"
@@ -32,7 +20,7 @@ if(isset($_REQUEST['btn_login']))
 	{
 		try
 		{
-			$select_stmt=$db->prepare("SELECT username,email,pwd,role FROM usuarios WHERE email=:uemail AND pwd=:upassword AND role=:urole");
+			$select_stmt=$db->prepare("SELECT email,pwd,role FROM usuarios WHERE email=:uemail AND pwd=:upassword AND role=:urole");
 			$select_stmt->bindParam(":uemail",$email);
 			$select_stmt->bindParam(":upassword",$password);
 			$select_stmt->bindParam(":urole",$role);
@@ -51,20 +39,10 @@ if(isset($_REQUEST['btn_login']))
 					{
 						switch($dbrole)		//inicio de sesión de usuario base de roles
 						{
-							case "admin":
-								$_SESSION["admin_login"]=$email;			
-								$loginMsg="Admin: Inicio sesión con éxito";	
-								header("refresh:1;admin/indexadmin.php");	
-								break;
-							case "personal";
-								$_SESSION["personal_login"]=$email;				
-								$loginMsg="Personal: Inicio sesión con éxito";		
-								header("refresh:1;personal/personal_portada.php");	
-								break;
 							case "usuario":
-								header("refresh:1;/usuarios/Vauto.php");	
 								$_SESSION["usuarios_login"]=$email;				
-								$loginMsg="Usuario: Inicio sesión con éxito";	
+								$loginMsg="Usuario: Inicio sesión con éxito";
+								header("refresh:3;usuarios/Vauto.php");	
 								break;
 							default:
 								$errorMsg[]="Correo electrónico o contraseña o rol incorrectos";

@@ -1,10 +1,7 @@
 <?php
-
-$miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
-
+$miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
     if(!$miconexion) 
     {
-
         echo "La conexion ha fallado: " . mysqli_error();
         exit();
     }
@@ -25,6 +22,10 @@ if(isset($_GET['id']))
     }
 }
 # Termina función de borrado ↑ ↑ ↑
+?>
+<script type="text/javascript">
+	window.location.href='Vauto.php';
+</script>
 ?>
 <script type="text/javascript">
 	window.location.href='Vauto.php';

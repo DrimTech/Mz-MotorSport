@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(empty($_SESSION['admin_login'])){ 
+header("Location: ../index.php"); 
+    exit(); 
+}
+if(isset($_SESSION['admin_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['admin_login'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="en" style="color: var(--blue);">
 <head>
@@ -12,13 +24,6 @@
     <title>MzMotorSport/Admin Page</title>
 </head><!--Título de pestaña, importaciones y conexiones-->
 <body>
-<?php
-  session_start();
-  if(!isset($_SESSION['admin_login']))    
-  {
-      header("location: ../login.php");  
-  } #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
-?>
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <div class="navbar-header">

@@ -1,5 +1,17 @@
-<?php
-$miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+         <link rel="stylesheet" href="/css/styles.css">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <title>MzMotorSport</title>
+      </head>
+<body>
+<?php 
+$miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
 $imagen     = '';
 $articulo   = '';
 $modelo     = '';
@@ -45,28 +57,19 @@ if(isset($_GET['id']))
       $contacto   = $row2['contacto'];
     }
   }
-?> <!-- Aqui comienza el contenedor donde se proyecta la publicación individual -->
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-         <link rel="stylesheet" href="/css/styles.css">
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-        <title>MzMotorSport</title>
-      </head>
-<body>
-<?php 
 if($result = mysqli_query($miconexion, $query)){
     while($row = mysqli_fetch_assoc($result)){
         if($row['imagen']!=""){
                 echo "
+                <nav class='navbar navbar-light bg-light'>
+                        <div class='container-fluid'>
+                            <a class='navbar-brand' href='/Cauto.php'>Regresas a Comprar</a>
+                        </div>
+                </nav>
     <section class='services'>
     <article class='container-cards'>
       <div class='container'> 
-        <img src='/usuarios/imagenes/" .$imagen. "' class='img-fluid' style='max-width:71%; height: 620px;' alt='...' id='img_car'>
+        <img src='/usuarios/imagenes/" .$imagen. "' class='img-fluid' alt='...' id='img_car'>
             <div class='card-preview'>
                 <div class='card_textv2'>
                     <div class='card_listv2' id='Car_name'>".$articulo."</div>
@@ -126,15 +129,15 @@ if($result = mysqli_query($miconexion, $query)){
         </div>
         <div class="modal-body">
                 <div class="mb-3">
-                    <h3 for="Modelo" class="form-label">Nombre</h3>
+                    <h4 for="Modelo" class="form-label">Nombre</h4>
                     <label for="Modelo" class="form-label"><?php echo $nombre." ".$apellidos; ?></label>
                 </div> 
                 <div class="mb-3">
-                    <h3 for="Modelo" class="form-label"></h3>
+                    <h4 for="Modelo" class="form-label">Correo electronico</h4>
                     <label for="Modelo" class="form-label"><?php echo $email; ?></label>
                 </div>
                 <div class="mb-3">
-                    <h3 for="Modelo" class="form-label">Número telefónico</h3>
+                    <h4 for="Modelo" class="form-label">Número telefónico</h4>
                     <label for="Modelo" class="form-label"><?php echo $contacto; ?></label>
                 </div>  
         </div>

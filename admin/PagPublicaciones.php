@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(empty($_SESSION['admin_login'])){ 
+header("Location: ../index.php"); 
+    exit(); 
+}
+if(isset($_SESSION['admin_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['admin_login'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,19 +34,6 @@
   <title>MzMotorSport</title>
 </head>
 <body>
-<?php
-  session_start();
-  if(isset($_SESSION['admin_login']))
-  {
-    global $correo;
-    $correo = $_SESSION['admin_login'];
-  } 
-  if(!isset($_SESSION['admin_login']))    
-  {
-      header("location: ../login.php");  
-  }
-?>
-  <!--Header-->
   <header class="herov2">
     <nav class="nav_hero">
       <div class="container nav_container">
@@ -42,7 +41,7 @@
           <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
         </div>
         <ul class="links">
-          <li class="link-menu-items"><a href="../index.html" class="link">Inicio</a></li>
+          <li class="link-menu-items"><a href="../index.php" class="link">Inicio</a></li>
           <li class="link-menu-items"><a href="../Cauto.php" class="link">Comprar</a></li>
           <li class="link-menu-items"><a href=" Vauto.php" class="link">Vender</a></li>
           <li class="link-menu-items"><a href="#" class="link">Noticias</a></li>
@@ -71,7 +70,7 @@
         </tr>
     </thead>
 <?php
-  $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+  $miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
   $query="SELECT * FROM autos";
   if($result_contenido = mysqli_query($miconexion,$query))
   {
@@ -87,8 +86,8 @@
     <td class="centro" width="15%">
       <a href="../AutoVentana.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></a></span>
     </td>   
-    <td class="centro" width="18%"><a href="../personal/autorizar_articulo.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></a></span></td>
-    <td class="centro" width="8%"><a href="../usuarios/eliminar_articulo.php?id=<?php echo $row['id']?>" class = "btn btn-danger" name="btn_borrar_user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
+    <td class="centro" width="18%"><a href="autorizar_articuloadmin.php?id=<?php echo $row['id']?>" class = "btn btn-primary" name="btn_borrar_user"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></a></span></td>
+    <td class="centro" width="8%"><a href="eliminar_articuloadmin.php?id=<?php echo $row['id']?>" class = "btn btn-danger" name="btn_borrar_user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></a></span></td>
   </tr>
   <?php 
   }

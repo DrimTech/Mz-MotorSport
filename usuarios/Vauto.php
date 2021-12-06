@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(empty($_SESSION['usuarios_login'])){ 
+header("Location: ../login.php"); 
+    exit(); 
+}
+if(isset($_SESSION['usuarios_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['usuarios_login'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,22 +30,9 @@
     text-align: center;
   }
 </style>
-
   <title>MzMotorSport</title>
 </head>
 <body>
-<?php
-  session_start();
-  if(isset($_SESSION['usuarios_login']))
-  {
-    global $correo;
-    $correo = $_SESSION['usuarios_login'];
-  } 
-  if(!isset($_SESSION['usuarios_login']))    
-  {
-      header("location: ../login.php");  
-  }
-?>
   <!--Header-->
   <header class="herov2">
     <nav class="nav_hero">
@@ -56,12 +55,12 @@
   <h2 style = "color:#0d6efd;">
 				</h2>
   <h3>La forma <strong>más sencilla</strong> de vender tu Auto</h3>
-
   <div class="row">
    <div class="col">
      <div class="p-3 pb-5 bg-light">
        <h4>Cuestionario de venta</h4>
        <p>Iniciar cuestionario de venta para generar una publicacion</p><br>
+       <p><strong>NOTA:</strong>Si la publicación no es autorizada después de <strong >2 DÍAS, </strong>elimine su publicación y vuelva a intentarlo.</p>
           <button type="button" id="btn-nueva-cita" 
           class="btn btn-primary d-inline float-end shadow" data-bs-toggle="modal" data-bs-target="#modal-nueva-cita" style="color:rgb(255, 255, 255);">Vender<i class='bx bxs-plus-square' ></i></button>
       </div>
@@ -82,7 +81,7 @@
         </tr>
     </thead>
 <?php
-  $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+  $miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
   $query="SELECT id,email_usuario,articulo,modelo, fecha, autorizada, vendido FROM autos where email_usuario = '$correo'";
   if($result_contenido = mysqli_query($miconexion,$query))
   {
@@ -144,7 +143,7 @@
                       <!---->
                        <div class="mb-3">
                         <label for="cuerpo" class="form-label">Comentarios</label>
-                        <textarea class="form-control" name="comentario" id="comentario" rows="3"  placeholder="Descripción/detalles"></textarea>
+                        <input type="text" class="form-control" name="comentario" id="comentario" maxlenght="20" placeholder="Descripción/detalles"></input>
                       </div>
                       <!---->
                       <div class="mb-3">

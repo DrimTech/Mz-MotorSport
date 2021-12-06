@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(empty($_SESSION['admin_login'])){ 
+header("Location: ../index.php"); 
+    exit(); 
+}
+?>
+<?php
 require_once "../DBconect.php";
 if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_register" y configúrelo
 {
@@ -153,14 +160,14 @@ if(isset($_REQUEST['btn_register'])) //compruebe el nombre del botón "btn_regis
 						<div class="form-group">
 							<label class="col-sm-9 text-left">Nombre</label>
 							<div class="col-sm-12">
-								<input type="text" name="txt_nombre" class="form-control" placeholder="Ingrese usuario" />
+								<input type="text" name="txt_nombre" class="form-control" placeholder="Ingrese el nombre del validador" />
 							</div>
 						</div>
 						<!---->
 						<div class="form-group">
 							<label class="col-sm-9 text-left">Apellidos</label>
 							<div class="col-sm-12">
-								<input type="text" name="txt_apellidos" class="form-control" placeholder="Ingrese usuario" />
+								<input type="text" name="txt_apellidos" class="form-control" placeholder="Ingrese apellidos" />
 							</div>
 						</div>
 						<!---->

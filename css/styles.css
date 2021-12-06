@@ -206,8 +206,8 @@ body{
 
 .card-preview {
     float: right;
-    width: 28%;
-    height: 630px;
+    width: 19rem;
+    height: 39rem;
     padding: 30px 30px;
     overflow: hidden;
     background: linear-gradient(180deg, #ffffff 0%, var(--light) 100%);
@@ -223,11 +223,13 @@ body{
     height: 150px;
     object-fit: cover;
 }
+
 .img-fluid
 {
-    max-width: 64%;
-    height: 630px;
+    width: 50rem;
+    height:auto;
 }
+
 .card_text{
     text-align: center;
     width: 90%;
@@ -246,6 +248,7 @@ body{
     margin: 25px 0 12px ;
     font-size: 18px;
 }
+
 
 .card_listv2{
     color: var(--blue2);
@@ -340,7 +343,8 @@ body{
     justify-content: space-evenly;
 }
 
-.footer_copy{
+.footer_copy
+{
 
     color: var(--black1);
     display: flex;
@@ -360,7 +364,8 @@ body{
 
 /* Responsive */
 
-@media screen and (max-width:1200px){
+@media screen and (max-width:1366px)
+{
     .mockup{
         width: 600px;
         height: auto;
@@ -400,12 +405,18 @@ body{
         margin-bottom: 35px;
     }
 
-    .card-preview {
-        float: center;
-        width: 100%;
-        height: 500px;
+    .card-preview 
+    {
+        float: right;
+        width: 19rem;
+        height: 39rem;
         padding: 30px 30px;
-        margin-top: 20px;
+        overflow: hidden;
+        background: linear-gradient(180deg, #ffffff 0%, var(--light) 100%);
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 35px;
+        box-shadow: 0 0 6px var(--color_shadow);
     }
     
     .img-fluid
@@ -415,9 +426,10 @@ body{
     }
 }   
 
-@media screen and (max-width:768px){
-    main .container,
-    footer .container{
+@media screen and (max-width:1024px)
+{
+    .main .container,
+    .footer .container{
         padding: 60px 0;
     }
 

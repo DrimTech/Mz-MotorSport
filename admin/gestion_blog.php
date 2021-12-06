@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(empty($_SESSION['admin_login'])){ 
+header("Location: ../index.php"); 
+    exit(); 
+}
+if(isset($_SESSION['admin_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['admin_login'];
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,17 +82,6 @@
 
 		<center>
 			<h1>Página Administrativa</h1>
-			<h3>
-			<?php
-			session_start();
-
-			if(!isset($_SESSION['admin_login']))	
-			{
-				header("location: ../logadmin.php");  
-			} #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
-			?>
-            
-			</h3>
 		</center>
 
 		<!--<a href="../cerrar_sesion.php"><button class="btn btn-danger text-left"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cerrar Sesion</button></a>-->
@@ -112,7 +113,7 @@
                                 <tbody>
 
 								<?php
-								$miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");                                ;
+                                $miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");                               ;
 								$query="SELECT * FROM noticias";
 								$result_contenido = mysqli_query($miconexion,$query);
 								

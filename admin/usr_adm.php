@@ -1,11 +1,9 @@
 <?php
-require_once '../DBconect.php';
 session_start();
-
-if(!isset($_SESSION['admin_login']))    
-{
-    header("location: ../logadmin.php");  
-} #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
+if(empty($_SESSION['admin_login'])){ 
+header("Location: ../index.php"); 
+    exit(); 
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,7 +93,7 @@ if(!isset($_SESSION['admin_login']))
                                 </thead> <!-- Columnas de la tabla administrativa -->
                                 <tbody>
             					<?php
-                                $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+                                $miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
                                 $query="SELECT * FROM usuarios WHERE role = 'adminval'";
                                 $result_contenido = mysqli_query($miconexion,$query);
                                 while($row=mysqli_fetch_array($result_contenido))

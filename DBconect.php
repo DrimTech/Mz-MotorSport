@@ -1,11 +1,12 @@
 <?php
 $db_host="localhost"; //localhost server 
-$db_user="root";	//database username
-$db_password="";	//database password   
-$db_name="mz_motorsports";	//database name
+$db_user="id17552518_root";	//database username
+$db_password="GBou9x2FtB!!";	//database password   
+$db_name="id17552518_mz_motorsports";	//database name
 
 try
 {
+    global $db;
 	$db=new PDO("mysql:host={$db_host};dbname={$db_name}",$db_user,$db_password);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }

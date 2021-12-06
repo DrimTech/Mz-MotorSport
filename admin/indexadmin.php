@@ -1,9 +1,14 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['admin_login']))    
+session_start();
+if(empty($_SESSION['admin_login'])){ 
+header("Location: ../index.php"); 
+    exit(); 
+}
+if(isset($_SESSION['admin_login']))
   {
-      header("location: ../login.php");  
-  } #Comprueba que el admin esté logueado, si no lo está lo manda a iniciar sesión
+    global $correo;
+    $correo = $_SESSION['admin_login'];
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en" style="color: var(--blue);">

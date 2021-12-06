@@ -1,9 +1,12 @@
 <footer class="footer-basic" style="background: var(--gray);border-color: var(--orange);">
-    <div class="text-center">
-    <h2></h2>
-    <p class="copyright" style="display: inline; margin-right:0px">DrimTeam Technlogies© 2021, All Rights Reserved</p>
-    <div>
-</footer><!--Footer, pie de página, redes sociales y contacto-->
+    <center>
+    <div class="container footer_caption">
+      <div class="footer_copy">
+        <p class=".copyright">MzMotorSport &copy; 2021 Todos los derechos reservados</p>
+      </div>
+    </div>
+    </center>
+</footer>
 <script src="/js/scroll.js"></script>
 <script src="js/jquery-1.12.4-jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>

@@ -1,3 +1,6 @@
+<?php 
+session_start();
+include "elements/header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +11,15 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" type="text/css" href="css/login_regis_form.css">
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+  
 <!-- Font Awesome CSS -->
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
 <!-- jQuery -->
   <title>MzMotorSport</title>
+    <link rel="shortcut icon" type="image/jpg" href="/favicon.png"/>
 </head>
 <body>
   <!--HEADER MAIN-->
-<?php include "elements/header.php"; ?>
     <section class="container hero_main">
       <div class="hero_textos">
         <h1 class="title">El mejor lugar<span class="title--active"> Para comprar un Deportivo</span></h1>
@@ -58,7 +62,7 @@
             <div class="card_list">Seccion de Noticias</div>
             <h3 class="card_title">Noticias</h3>
             <p class="card_copy">Visita nuestro blog personal donde te puedes enterar de todas las noticias del mundo automotriz y nuestros avisos importantes</p>
-            <a href="" class="card_button">Ver</a>
+            <a href="blog/noticias.php" class="card_button">Ver</a>
           </div>
         </div>
         <!--Tarjetas de servicios(FIN)-->

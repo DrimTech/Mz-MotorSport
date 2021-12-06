@@ -1,3 +1,11 @@
+<?php
+session_start();
+  if(isset($_SESSION['usuarios_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['usuarios_login'];
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,15 +13,10 @@
 </head>
 <body>
 <?php
-session_start();
-	$miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+	$miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
 	if(!$miconexion) {
 		echo "La conexion ha fallado: " . mysqli_error();
 		exit();
-	}
-	if(isset($_SESSION['usuarios_login']))
-	{
-		$email = $_SESSION['usuarios_login'];
 	}
 	if($_FILES['imagen']['error']){
 		switch ($_FILES['imagen']['error']) {
@@ -49,7 +52,7 @@ session_start();
 	$comentario 	= $_POST['comentario'];
 	$laimagen	 	= $_FILES['imagen']['name'];
 	$fecha 			= date("Y-m-d H:i:s");
-	$vendido 		= 'No';
+	$vendido 		= 'Si';
 	$estado 		= 'No';
 	$miconsulta = "INSERT INTO autos (email_usuario, articulo, modelo, color, km, precio, comentario, imagen, fecha, vendido, autorizada) VALUES ('" . $correo ."', '" . $articulo ."', '" . $modelo ."', '" . $color ."', '" . $km ."', '" . $precio ."', '" . $comentario ."', '". $laimagen ."', '". $fecha ."', '". $vendido ."', '". $estado ."')"; # Inserta la entrada en la database
 	$resultado=mysqli_query($miconexion, $miconsulta);

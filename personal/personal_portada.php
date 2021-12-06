@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(empty($_SESSION['personal_login'])){ 
+header("Location: ../index.php"); 
+    exit(); 
+}
+if(isset($_SESSION['personal_login']))
+  {
+    global $correo;
+    $correo = $_SESSION['personal_login'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,19 +34,6 @@
   <title>MzMotorSport</title>
 </head>
 <body>
-<?php
-  session_start();
-  if(isset($_SESSION['personal_login']))
-  {
-    global $correo;
-    $correo = $_SESSION['personal_login'];
-  } 
-  if(!isset($_SESSION['personal_login']))    
-  {
-      header("location: ../login.php");  
-  }
-?>
-  <!--Header-->
   <header class="herov2">
     <nav class="nav_hero">
       <div class="container nav_container">
@@ -71,7 +70,7 @@
         </tr>
     </thead>
 <?php
-  $miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+  $miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
   $query="SELECT * FROM autos";
   if($result_contenido = mysqli_query($miconexion,$query))
   {

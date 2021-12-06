@@ -1,6 +1,6 @@
 <?php
 if(!isset($_SESSION['admin_login']))
-$miconexion = mysqli_connect("localhost", "root", "", "mz_motorsports");
+$miconexion = mysqli_connect("localhost", "id17552518_root", "GBou9x2FtB!!", "id17552518_mz_motorsports");
     if(!$miconexion) 
     {
 

@@ -153,14 +153,14 @@ include("elements/headerv2.php");
 						<div class="form-group">
 							<label class="col-sm-9 text-left">Nombre</label>
 							<div class="col-sm-12">
-								<input type="text" name="txt_nombre" class="form-control" placeholder="Ingrese usuario" />
+								<input type="text" name="txt_nombre" class="form-control" placeholder="Ingrese nombre" />
 							</div>
 						</div>
 						<!---->
 						<div class="form-group">
 							<label class="col-sm-9 text-left">Apellidos</label>
 							<div class="col-sm-12">
-								<input type="text" name="txt_apellidos" class="form-control" placeholder="Ingrese usuario" />
+								<input type="text" name="txt_apellidos" class="form-control" placeholder="Ingrese sus apellidos" />
 							</div>
 						</div>
 						<!---->
@@ -174,7 +174,7 @@ include("elements/headerv2.php");
 						<div class="form-group">
 							<label class="col-sm-9 text-left">Celular</label>
 							<div class="col-sm-12">
-								<input type="text" name="txt_contacto" class="form-control" placeholder="Número telefónico/celular" />
+								<input type="text" name="txt_contacto" class="form-control" placeholder="Número telefónico/celular" maxlength="10" />
 							</div>
 						</div>
 						<!---->

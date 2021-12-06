@@ -12,7 +12,7 @@
                 <img class="logo_name" src="../assets/img/MZMOTORSPORTLOGO.png" alt="">
             </div>
             <ul class="links">
-                <li class="link-menu-items"><a href="index.html" class="link">Inicio</a></li>
+                <li class="link-menu-items"><a href="index.php" class="link">Inicio</a></li>
             </ul>
             </div>
     </nav>
